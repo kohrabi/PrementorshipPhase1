@@ -6,5 +6,5 @@ Tạo game Memory Matching bằng Unity
 - Tạo GameManager quản lý thời gian
 - Làm Animation cho button
 # Phân chia Task
-Khang, Khôi - làm front end, gui button
-Khoa, Lương, Hào - làm GameManager quản lý game
+- Khang, Khôi - làm front end, gui button
+- Khoa, Lương, Hào - làm GameManager quản lý game
