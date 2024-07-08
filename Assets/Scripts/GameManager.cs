@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+
         if (_instance != null)
         {
 
@@ -17,7 +18,7 @@ public class GameManager : MonoBehaviour
         else
         {
             _instance = this;
-            DontDestroyOnLoad(gameObject);
+
         }
 
     }
@@ -38,14 +39,18 @@ public class GameManager : MonoBehaviour
 
             //gán nó cho _gameData
             this._gameData = JsonUtility.FromJson<GameData>(savedJSON);
+            
         }
         else
         {
             Init();
         }
     }
+    void Update()
+    {
 
-    public int level() { return _gameData.level; }
+    }
+    public int level() {  return _gameData.level; }
     public void Load(string name)
     {
         SceneController.Instance.LoadScene(name);

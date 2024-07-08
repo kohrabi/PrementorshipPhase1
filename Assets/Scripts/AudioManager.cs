@@ -17,7 +17,7 @@ public class AudioManager : MonoBehaviour
         else
         {
             _instance = this;
-            DontDestroyOnLoad(gameObject);
+          
         }
 
     }
@@ -28,9 +28,11 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        musicSource.mute = false;
-        sfxSource.mute =false;
-     
+
+        musicSource.mute = GameManager.Instance.isMuteMusic();
+        sfxSource.mute = GameManager.Instance.isMuteSfx();
+       
+
     }
     public void PlayMusic(string name)
     {

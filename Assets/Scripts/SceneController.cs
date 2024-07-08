@@ -17,7 +17,7 @@ public class SceneController : MonoBehaviour
         else
         {
             _instance = this;
-            DontDestroyOnLoad(gameObject);
+          
         }
     }
 

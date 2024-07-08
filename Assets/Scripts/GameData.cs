@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameData
 {
-    public int level;
+    public int level=0;
     public bool isMuteMusic, isMuteSfx;
     public GameData()
     {
