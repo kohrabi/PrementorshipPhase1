@@ -28,7 +28,6 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-
         musicSource.mute = GameManager.Instance.isMuteMusic();
         sfxSource.mute = GameManager.Instance.isMuteSfx();
        
@@ -63,5 +62,13 @@ public class AudioManager : MonoBehaviour
     public AudioSource GetAudioSourceReference()
     {
         return musicSource;
+    }
+    public void Wait(float t)
+    {
+        StartCoroutine(wait(t));
+    }
+    IEnumerator wait(float t)
+    {
+        yield return new WaitForSeconds(t);
     }
 }

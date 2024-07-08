@@ -20,7 +20,21 @@ public class GameManager : MonoBehaviour
             _instance = this;
 
         }
+        if (PlayerPrefs.HasKey(DATA_KEY))
+        {
+            //nếu có
 
+            //JSON hóa từ string đã lưu thành class
+            string savedJSON = PlayerPrefs.GetString(DATA_KEY);
+
+            //gán nó cho _gameData
+            this._gameData = JsonUtility.FromJson<GameData>(savedJSON);
+
+        }
+        else
+        {
+            Init();
+        }
     }
 
     #endregion Singleton
