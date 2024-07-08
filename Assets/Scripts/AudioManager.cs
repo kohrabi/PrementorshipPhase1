@@ -30,7 +30,7 @@ public class AudioManager : MonoBehaviour
     {
         musicSource.mute = false;
         sfxSource.mute =false;
-       
+     
     }
     public void PlayMusic(string name)
     {
