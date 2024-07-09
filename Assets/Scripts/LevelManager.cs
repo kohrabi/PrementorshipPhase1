@@ -63,4 +63,38 @@ public class LevelManager : MonoBehaviour
         PlayerPrefs.SetString(DATA_KEY, dataJSON);
     }
     public int getLv() { return level; }
+
+    #region Select And Compare Box
+
+    private ButtonScript _box1;
+    private ButtonScript _box2;
+
+    public void GetClick(ButtonScript button)
+    {
+        if (_box1 == null)
+        {
+            _box1 = button;
+            return;
+        }
+        _box2 = button;
+
+        if (_box2.buttonType.type != _box1.buttonType.type)
+        {
+            //Đóng box1 và box2 (thêm hàm)
+            /*
+             
+             */
+
+            _box1 = null;
+            _box2 = null;
+            return;
+        }
+
+        //Cộng điểm
+        /*
+         GameManager.Instace.
+         */
+    }
+
+    #endregion Select And Compare Box
 }
