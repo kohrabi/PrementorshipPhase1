@@ -12,4 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f284f2f5f6a1fed4f8f82771c10b424c, type: 3}
   m_Name: Data
   m_EditorClassIdentifier: 
-  BoxTypeList: []
+  BoxTypeList:
+  - Name: 
+    type: 0
+    icon: {fileID: 21300000, guid: dfb6ac55b4aa33042ad379a6b927c1b5, type: 3}
+  - Name: 
+    type: 1
+    icon: {fileID: 21300000, guid: 700d86d25fd2d934e89a3b6ca6f5bc18, type: 3}
