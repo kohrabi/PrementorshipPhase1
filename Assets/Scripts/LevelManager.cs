@@ -26,7 +26,6 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private string musicName;
     private LevelData _levelData;
 
-    // Start is called before the first frame update
     void Start()
     {
         AudioManager.Instance.PlayMusic(musicName);
@@ -46,7 +45,6 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
 
