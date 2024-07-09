@@ -64,13 +64,14 @@ public class LevelManager : MonoBehaviour
     }
     public int getLv() { return level; }
 
-    #region Select And Compare Box
 
+    #region Select And Compare Box
     private ButtonScript _box1;
     private ButtonScript _box2;
 
     public void GetClick(ButtonScript button)
     {
+        //Chưa chọn đủ
         if (_box1 == null)
         {
             _box1 = button;
@@ -78,6 +79,7 @@ public class LevelManager : MonoBehaviour
         }
         _box2 = button;
 
+        //Chọn sai
         if (_box2.buttonType.type != _box1.buttonType.type)
         {
             //Đóng box1 và box2 (thêm hàm)
@@ -90,11 +92,11 @@ public class LevelManager : MonoBehaviour
             return;
         }
 
+        //Chọn đúng
         //Cộng điểm
         /*
          GameManager.Instace.
          */
     }
-
     #endregion Select And Compare Box
 }
