@@ -30,7 +30,6 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private string musicName;
     private LevelData _levelData;
 
-    // Start is called before the first frame update
     void Start()
     {
         AudioManager.Instance.PlayMusic(musicName);
@@ -53,7 +52,6 @@ public class LevelManager : MonoBehaviour
         UpdateUI();
     }
 
-    // Update is called once per frame
     void Update()
     {
 
@@ -135,4 +133,40 @@ public class LevelManager : MonoBehaviour
             sfx.spriteState = state;
         }
     }
+
+
+    #region Select And Compare Box
+    private ButtonScript _box1;
+    private ButtonScript _box2;
+
+    public void GetClick(ButtonScript button)
+    {
+        //Chưa chọn đủ
+        if (_box1 == null)
+        {
+            _box1 = button;
+            return;
+        }
+        _box2 = button;
+
+        //Chọn sai
+        if (_box2.buttonType.type != _box1.buttonType.type)
+        {
+            //Đóng box1 và box2 (thêm hàm)
+            /*
+             
+             */
+
+            _box1 = null;
+            _box2 = null;
+            return;
+        }
+
+        //Chọn đúng
+        //Cộng điểm
+        /*
+         GameManager.Instace.
+         */
+    }
+    #endregion Select And Compare Box
 }

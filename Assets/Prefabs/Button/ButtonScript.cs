@@ -14,6 +14,11 @@ public enum ButtonState
 
 public class ButtonScript : MonoBehaviour
 {
+    //De phan loai button//Khoi
+    public BoxClass buttonType;
+
+
+
     [SerializeField] public Transform Text;
     [SerializeField] public Transform Sprites;
     [SerializeField] public Transform HiddenFrame;
