@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class LevelData
 {
-    public float time;
-    public int numFlip;
+    public float time1,time2;
+    public int move1,move2;
     public LevelData()
     {
-        time = -1;
-        numFlip = -1;
+        time1 = time2 = move1 = move2 = -1;
     }
 }

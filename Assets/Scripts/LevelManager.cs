@@ -28,6 +28,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private string DATA_KEY;
     [SerializeField] private int level;
     [SerializeField] private string musicName;
+    private float time;
     private LevelData _levelData;
 
     void Start()
@@ -50,11 +51,13 @@ public class LevelManager : MonoBehaviour
         Time.timeScale = 1;
         pauseMenu.SetActive(false);
         UpdateUI();
+        //TimeManager.Instance.StartTracking();
+        time = 0;
     }
 
-    void Update()
+    void FixedUpdate()
     {
-
+        
     }
     public void Init()
     {
