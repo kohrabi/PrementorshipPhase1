@@ -1,13 +1,14 @@
 using DG.Tweening;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum ButtonState
 {
     None,
     Hover,
     Exit, 
-    Click,
+    Chosen,
     Correct,
     Wrong
 }
@@ -22,6 +23,7 @@ public class ButtonScript : MonoBehaviour
     [SerializeField] public Transform Text;
     [SerializeField] public Transform Sprites;
     [SerializeField] public Transform HiddenFrame;
+    [SerializeField] public Image ButtonSprite;
     [Header("Animation Time")]
     [SerializeField] public float OpenCloseAnimation = 0.8f;
     [SerializeField] public float ExitAnimation = 0.4f;
@@ -29,9 +31,16 @@ public class ButtonScript : MonoBehaviour
     [SerializeField] public float ShakeAnimation = 0.4f;
 
     ButtonState state; // Trang thai cua button
-    bool flipped = false;
     public bool IsChosen = false;
+    public bool Completed = false;
     bool resetting = false;
+
+    Sequence boxPointerEnter;
+    Sequence boxPointerExit;
+    Sequence boxOpen;
+    Sequence boxClose;
+    Sequence boxCorrect;
+    Sequence boxWrong;
 
     public void Start()
     {
@@ -40,40 +49,59 @@ public class ButtonScript : MonoBehaviour
         state = ButtonState.None;
     }
 
+    public void SetSprite(Sprite sprite)
+    {
+        ButtonSprite.sprite = sprite;   
+    }
+
     public void Update()
     {
+        if (IsChosen) state = ButtonState.Chosen;
+
         if (Input.GetKeyDown(KeyCode.Space))
-            PlayWrongAnimation();
+            Wrong();
         if (Input.GetKeyDown(KeyCode.U))
-            PlayCorrectAnimation();
+            Correct();
     }
 
     public void OnPointerClick()
     {
-        state = ButtonState.Click;
-        PlayPointerClickAnimation();
+        if (state == ButtonState.Chosen) return;
+        PlayOpenAnimation();
+        state = ButtonState.Chosen;
     }
 
     public void OnPointerHover()
     {
-        state = ButtonState.Hover;
+        if (state == ButtonState.Chosen)
+        {
+            PlayHoverShakeAnimation();
+        }
+        if (state == ButtonState.Hover || 
+            state == ButtonState.Chosen) return;
         PlayPointerHoverAnimation();
+        state = ButtonState.Hover;
     }
 
     public void OnPointerExit()
     {
-        state = ButtonState.Exit;
+        if (state == ButtonState.Chosen || 
+            state == ButtonState.Exit) return;
         PlayPointerExitAnimation();
+        state = ButtonState.Exit;
     }
 
     public void Correct()
     {
-        state = ButtonState.Correct;
+        if (state != ButtonState.Chosen) return;
         PlayCorrectAnimation();
+        Completed = true;
+        state = ButtonState.Correct;
     }
 
     public void Wrong()
     {
+        if (state != ButtonState.Chosen) return;
         state = ButtonState.Wrong;
         PlayWrongAnimation();
     }
@@ -82,33 +110,29 @@ public class ButtonScript : MonoBehaviour
     private void PlayCorrectAnimation()
     {
         if (!IsChosen) return;
-        Sequence animation = DOTween.Sequence();
-        animation.SetTarget(this);
-        animation.Append(
+
+        boxCorrect = DOTween.Sequence(this);
+        boxCorrect.Append(
             Sprites.DORotate(new Vector3(0, 0, 370), 0.8f)
             .SetEase(Ease.OutBack)
             .SetRelative());
-        animation.Join(
+        boxCorrect.Join(
             Sprites.DOScale(1.3f, 0.2f)
             .SetEase(Ease.OutBack)
-            .OnComplete(() => Sprites.DOScale(1.2f, 0.2f).SetEase(Ease.OutBack).Play() ));
-        animation.Append(
+            .OnComplete(() => Sprites.DOScale(1.2f, 0.2f).SetEase(Ease.OutBack).Play()));
+        boxCorrect.Append(
             Sprites.DOScale(1, 0.2f)
             .SetEase(Ease.OutQuint)
             );
         //animation.Append(
         //    Sprites.DORotate(new Vector3(0, 0, 20f), 0.4f)
         //    .SetEase(Ease.OutBounce));
-        animation.AppendInterval(0);
-        animation.SetAutoKill(true);
-        animation.Play();
-        StartCoroutine(WaitForLastAnimation(animation.Duration()));
+        boxCorrect.OnComplete(SetState);
+        boxCorrect.Play();
     }
 
     private void PlayWrongAnimation()
     {
-        if (!IsChosen) return;
-        state = ButtonState.Wrong;
         resetting = true;
         Sprites.DOShakePosition(ShakeAnimation, new Vector3(25, 0), 20)
             .Play()
@@ -121,72 +145,110 @@ public class ButtonScript : MonoBehaviour
 
     private void PlayResetAnimation()
     {
-        PlayPointerClickAnimation();
+        PlayCloseAnimation();
     }
 
-    private void PlayPointerClickAnimation()
+    private void PlayOpenAnimation()
     {
         // Flipping Animation
-        Sequence animation = DOTween.Sequence();
-        animation.SetTarget(this);
 
-        if (flipped) // Play close Animation
-        {
-            animation.Append(
+        boxOpen = DOTween.Sequence(this);
+        boxOpen.Append(
+            HiddenFrame.DORotate(new Vector3(0, 90, 0), OpenCloseAnimation / 2)
+            .SetEase(Ease.OutCubic)
+            .OnComplete(() => HiddenFrame.gameObject.SetActive(false)));
+        //animation.Join(HiddenFrame.DOShakeRotation(0.2f, new Vector3(0, 0f, 20f), 20));
+        boxOpen.Append(
+            Sprites.DOLocalRotate(new Vector3(0, 0, 0), OpenCloseAnimation / 2)
+            .SetEase(Ease.OutCubic));
+        boxOpen.Join(
+            Sprites.DOScale(1, ExitAnimation)
+                .SetEase(Ease.OutQuint)
+        );
+        boxOpen.Play();
+
+        // Setting Card state
+        IsChosen = true;
+    }
+
+    private void PlayCloseAnimation()
+    {
+        boxClose = DOTween.Sequence(this);
+
+        boxClose.Append(
                 Sprites.DOLocalRotate(new Vector3(0, 90, 0), OpenCloseAnimation / 2)
                 .SetEase(Ease.OutCubic)
                 .OnComplete(() => HiddenFrame.gameObject.SetActive(true)));
-            //animation.Join(Sprites.DOShakeRotation(OpenCloseAnimation / 3, new Vector3(0, 0f, 40f), 20));
-            animation.Append(
-                HiddenFrame.DORotate(new Vector3(0, 0, 0), OpenCloseAnimation / 2)
-                .SetEase(Ease.OutCubic));
-        }
-        else // Play open animation
+        //animation.Join(Sprites.DOShakeRotation(OpenCloseAnimation / 3, new Vector3(0, 0f, 40f), 20));
+        boxClose.Append(
+            HiddenFrame.DORotate(new Vector3(0, 0, 0), OpenCloseAnimation / 2)
+            .SetEase(Ease.OutCubic));
+
+        boxClose.OnComplete(SetState);
+        boxClose.Play();
+        IsChosen = false;
+    }
+
+    private bool shakingPlaying = false;
+    private void PlayHoverShakeAnimation()
+    {
+        if (!shakingPlaying)
         {
-            animation.Append(
-                HiddenFrame.DORotate(new Vector3(0, 90, 0), OpenCloseAnimation / 2)
-                .SetEase(Ease.OutCubic)
-                .OnComplete(() => HiddenFrame.gameObject.SetActive(false)));
-            //animation.Join(HiddenFrame.DOShakeRotation(0.2f, new Vector3(0, 0f, 20f), 20));
-            animation.Append(
-                Sprites.DOLocalRotate(new Vector3(0, 0, 0), OpenCloseAnimation / 2)
-                .SetEase(Ease.OutCubic));
+            if (state == ButtonState.Chosen)
+            {
+                shakingPlaying = true;
+                Sprites.DOShakeRotation(0.2f, new Vector3(0f, 0, 10), 20)
+                    .Play()
+                    .OnComplete(() => shakingPlaying = false);
+            }
+            else
+            {
+                shakingPlaying = true;
+                Sprites.DOShakeRotation(0.2f, new Vector3(10f, 0, 0), 20)
+                    .Play()
+                    .OnComplete(() => shakingPlaying = false);
+            }
         }
-        StartCoroutine(WaitForLastAnimation(animation.Duration()));
-        animation.AppendInterval(0);
-        animation.SetAutoKill(true);
-        animation.Play();
-        // Setting Card state
-        flipped = !flipped;
-        IsChosen = !IsChosen;
-        // Transitioning to the 
-        if (IsChosen)
-            PlayPointerHoverAnimation(); // Show as selected
-        else
-            PlayPointerExitAnimation(); // Show as deselected
     }
 
     private void PlayPointerHoverAnimation()
     {
-        Sprites.DOShakeRotation(0.2f, new Vector3(10f, 0, 10f), 20)
-            .Play();
-        Sprites.DOScale(1.2f, HoverAnimation)
-            .SetEase(Ease.OutQuint)
-            .Play();
-        StartCoroutine(WaitForLastAnimation(1.2f));
+        // Shaking
+        PlayHoverShakeAnimation();
+        if (state == ButtonState.Chosen || boxPointerEnter.IsActive())
+        {
+            return;
+        }
+        boxPointerEnter = DOTween.Sequence(this);
+        boxPointerEnter.Append(
+            Sprites.DOScale(1.2f, HoverAnimation)
+                .SetEase(Ease.OutQuint)
+            );
+        boxPointerEnter.OnComplete(SetState);
+        boxPointerEnter.Play();
     }
 
     private void PlayPointerExitAnimation()
     {
-        if (IsChosen) return;
-        Sprites.DORotate(new Vector3(0, Sprites.rotation.eulerAngles.y, Sprites.rotation.eulerAngles.z), 0.2f)
-            .Play();
-        Sprites.DOScale(1, ExitAnimation)
-            .SetEase(Ease.OutQuint)
-            .Play();
-        StartCoroutine(WaitForLastAnimation(1));
+        if (state == ButtonState.Chosen) return;
+
+        boxPointerExit = DOTween.Sequence(this);
+
+        boxPointerExit.Join(
+            Sprites.DOScale(1, ExitAnimation)
+                .SetEase(Ease.OutQuint)
+        );
+        boxPointerExit.OnComplete(SetState);
+        boxPointerExit.Play();
     }
 
+    private void SetState()
+    {
+        if (IsChosen)
+            state = ButtonState.Chosen;
+        else
+            state = ButtonState.None;
+    }
     IEnumerator WaitForLastAnimation(float seconds)
     {
         yield return new WaitForSeconds(seconds);

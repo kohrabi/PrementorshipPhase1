@@ -16,6 +16,7 @@ public enum BoxType
 [System.Serializable]
 public class BoxClass
 {
+    public string Name;
     public BoxType type;
     public Sprite icon;
 }
