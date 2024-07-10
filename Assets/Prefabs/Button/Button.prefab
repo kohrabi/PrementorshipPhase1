@@ -338,7 +338,7 @@ GameObject:
   - component: {fileID: 1792113404805389591}
   m_Layer: 5
   m_Name: Button
-  m_TagString: Untagged
+  m_TagString: PuzzleButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -459,6 +459,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonType:
+    Name: 
     type: 0
     icon: {fileID: 0}
   Text: {fileID: 4831894308821798247}
@@ -470,6 +471,7 @@ MonoBehaviour:
   HoverAnimation: 0.2
   ShakeAnimation: 0.2
   IsChosen: 0
+  Completed: 0
 --- !u!114 &1792113404805389591
 MonoBehaviour:
   m_ObjectHideFlags: 0

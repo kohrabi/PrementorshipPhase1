@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -30,6 +31,10 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private string musicName;
     private float time;
     private LevelData _levelData;
+     
+    [SerializeField] private BoxClassification _boxSO;  //Scriptable Object chua cac box, moi box co type va sprite rieng
+    [SerializeField] public List<BoxClass> _boxtypelist = new List<BoxClass>();        //Danh sach cac box khi duoc nhan doi
+    public List<ButtonScript> _board = new List<ButtonScript>();     //Danh sach cac button
 
     void Start()
     {
@@ -53,6 +58,9 @@ public class LevelManager : MonoBehaviour
         UpdateUI();
         //TimeManager.Instance.StartTracking();
         time = 0;
+
+        InitBoard();
+        
     }
 
     void FixedUpdate()
@@ -172,4 +180,54 @@ public class LevelManager : MonoBehaviour
          */
     }
     #endregion Select And Compare Box
+
+
+    void Shuffle(List<BoxClass> list)
+    {
+        for (int i = 0; i < list.Count; i++)
+        {
+            BoxClass temp = list[i];
+            int randomIndex = Random.Range(i, list.Count);
+            list[i] = list[randomIndex];
+            list[randomIndex] = temp;
+        }
+    }
+    void InitBoard()
+    {
+        //Them cac button vao _board
+        GameObject[] objects = GameObject.FindGameObjectsWithTag("PuzzleButton");
+        for (int i = 0; i < objects.Length; i++)
+        {
+            _board.Add(objects[i].GetComponent<ButtonScript>());
+        }
+
+        //Chuyen box trong scriptable object vao list va random
+        for (int i = 0; i < objects.Length/2; i++)
+        {
+            _boxtypelist.Add(_boxSO.BoxTypeList[i]);
+            _boxtypelist.Add(_boxSO.BoxTypeList[i]);     //Nhan doi so box
+        }
+        Shuffle(_boxtypelist);                           //Random cac box
+
+        //Gan box vao cac button
+        for (int i = 0; i < objects.Length; i++)
+        {
+            _board[i].buttonType = _boxtypelist[i];
+
+            //Tim Sprites la con cua button
+            Transform spritesTransform = _board[i].transform.Find("Sprites");
+            GameObject child = spritesTransform.gameObject;
+
+            //Tim ButtonFrame la con Sprites
+            Transform buttonFrameTransform = child.transform.Find("ButtonFrame");
+            GameObject grandchild = buttonFrameTransform.gameObject;
+            Image grandchildImage = grandchild.GetComponent<Image>();
+
+            //Thay doi ButtonFrame image thanh sprite tuong ung trong box (hinh anh phia sau button)
+            grandchildImage.sprite = _board[i].buttonType.icon;
+        }
+
+        
+    }
+
 }

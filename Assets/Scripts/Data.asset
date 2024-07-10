@@ -15,7 +15,25 @@ MonoBehaviour:
   BoxTypeList:
   - Name: 
     type: 0
-    icon: {fileID: 21300000, guid: dfb6ac55b4aa33042ad379a6b927c1b5, type: 3}
+    icon: {fileID: 21300000, guid: 62b4466859000554b95b6817efc16d42, type: 3}
   - Name: 
     type: 1
-    icon: {fileID: 21300000, guid: 700d86d25fd2d934e89a3b6ca6f5bc18, type: 3}
+    icon: {fileID: 21300000, guid: 6e3d4336afae42042824404fb571127f, type: 3}
+  - Name: 
+    type: 2
+    icon: {fileID: 21300000, guid: 714c7c23fc95c8b4c89d73d92ca392e7, type: 3}
+  - Name: 
+    type: 3
+    icon: {fileID: 21300000, guid: a683b71ee7e887c47ac8d0457c60fa90, type: 3}
+  - Name: 
+    type: 4
+    icon: {fileID: 21300000, guid: 0982adbe29a69174d94a801d827f3770, type: 3}
+  - Name: 
+    type: 5
+    icon: {fileID: 21300000, guid: 093f89d08769c71458bc18fb07c0a54d, type: 3}
+  - Name: 
+    type: 6
+    icon: {fileID: 21300000, guid: 1179479861c660a43aac2924867a04e3, type: 3}
+  - Name: 
+    type: 7
+    icon: {fileID: 21300000, guid: 9ee205befa2290d4084b2f27b004b881, type: 3}
