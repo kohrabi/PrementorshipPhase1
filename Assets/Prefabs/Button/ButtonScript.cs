@@ -29,7 +29,7 @@ public class ButtonScript : MonoBehaviour
     [SerializeField] public float ExitAnimation = 0.4f;
     [SerializeField] public float HoverAnimation = 0.4f;
     [SerializeField] public float ShakeAnimation = 0.4f;
-
+    
     ButtonState state; // Trang thai cua button
     public bool IsChosen = false;
     public bool Completed = false;
@@ -47,6 +47,12 @@ public class ButtonScript : MonoBehaviour
         Sprites.rotation = Quaternion.Euler(new Vector3(0, 90, 0));
         HiddenFrame.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
         state = ButtonState.None;
+
+        GameObject child = GameObject.Find("Sprites");
+        Transform buttonFrameTransform = child.transform.Find("ButtonFrame");
+        GameObject grandchild = buttonFrameTransform.gameObject;
+        Image grandchildImage = grandchild.GetComponent<Image>();
+        grandchildImage.sprite = buttonType.icon;
     }
 
     public void SetSprite(Sprite sprite)
