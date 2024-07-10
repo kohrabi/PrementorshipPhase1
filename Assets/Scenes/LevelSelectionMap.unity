@@ -1609,15 +1609,14 @@ MonoBehaviour:
   offMusic: {fileID: 53940023, guid: 0d0a3b4fe34d4564ba3708a72c674aa1, type: 3}
   onSfx: {fileID: -213356348, guid: 0d0a3b4fe34d4564ba3708a72c674aa1, type: 3}
   offSfx: {fileID: 1897002124, guid: 0d0a3b4fe34d4564ba3708a72c674aa1, type: 3}
-  onMusicPressed: {fileID: -663011761, guid: 0d0a3b4fe34d4564ba3708a72c674aa1, type: 3}
-  offMusicPressed: {fileID: 53940023, guid: 0d0a3b4fe34d4564ba3708a72c674aa1, type: 3}
-  onSfxPressed: {fileID: -213356348, guid: 0d0a3b4fe34d4564ba3708a72c674aa1, type: 3}
-  offSfxPressed: {fileID: 1897002124, guid: 0d0a3b4fe34d4564ba3708a72c674aa1, type: 3}
   music: {fileID: 1097287892}
   sfx: {fileID: 2114470107}
   DATA_KEY: 
   level: 0
   musicName: 
+  _boxSO: {fileID: 0}
+  _boxtypelist: []
+  _board: []
 --- !u!114 &1249931791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2596,8 +2595,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1249931791}
-        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+      - m_Target: {fileID: 1249931790}
+        m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
         m_MethodName: ToggleSfx
         m_Mode: 1
         m_Arguments:

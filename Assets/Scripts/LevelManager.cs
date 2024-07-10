@@ -24,7 +24,7 @@ public class LevelManager : MonoBehaviour
     }
     #endregion Singleton
     [SerializeField] private GameObject pauseMenu;
-    [SerializeField] private Sprite onMusic, offMusic, onSfx, offSfx, onMusicPressed, offMusicPressed, onSfxPressed, offSfxPressed;
+    [SerializeField] private Sprite onMusic, offMusic, onSfx, offSfx;
     [SerializeField] private Button music, sfx;
     [SerializeField] private string DATA_KEY;
     [SerializeField] private int level;
@@ -118,30 +118,22 @@ public class LevelManager : MonoBehaviour
         if (GameManager.Instance.isMuteMusic())
         {
             music.GetComponent<Image>().sprite = offMusic;
-            SpriteState state = music.spriteState;
-            state.pressedSprite = offMusicPressed;
-            music.spriteState = state;
+           
         }
         else
         {
             music.GetComponent<Image>().sprite = onMusic;
-            SpriteState state = music.spriteState;
-            state.pressedSprite = onMusicPressed;
-            music.spriteState = state;
+           
         }
         if (GameManager.Instance.isMuteSfx())
         {
             sfx.GetComponent<Image>().sprite = offSfx;
-            SpriteState state = sfx.spriteState;
-            state.pressedSprite = offSfxPressed;
-            sfx.spriteState = state;
+           
         }
         else
         {
             sfx.GetComponent<Image>().sprite = onSfx;
-            SpriteState state = sfx.spriteState;
-            state.pressedSprite = onSfxPressed;
-            sfx.spriteState = state;
+           
         }
     }
 

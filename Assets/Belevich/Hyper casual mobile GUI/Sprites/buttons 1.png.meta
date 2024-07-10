@@ -1488,7 +1488,7 @@ TextureImporter:
         width: 97
         height: 119
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1496,6 +1496,27 @@ TextureImporter:
       bones: []
       spriteID: 24af17ef1e84fdb429428f60fc22daf3
       internalID: -1530062650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: buttons 1_6
+      rect:
+        serializedVersion: 2
+        x: 5458
+        y: 763
+        width: 131
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11fc1d049cedd854092f8a4043a6968b
+      internalID: 1693822768
       vertices: []
       indices: 
       edges: []
@@ -1517,6 +1538,7 @@ TextureImporter:
       buttons 1_3: -1229513300
       buttons 1_4: 1555932944
       buttons 1_5: -1530062650
+      buttons 1_6: 1693822768
       buttons_0: 982110810
       buttons_1: -768068422
       buttons_10: 896764183
