@@ -420,7 +420,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1249931790}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
         m_MethodName: Load
         m_Mode: 5
@@ -1376,7 +1376,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1249931790}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
         m_MethodName: Load
         m_Mode: 5
@@ -1443,7 +1443,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &902851976
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1661,7 +1661,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1249931790}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
         m_MethodName: Load
         m_Mode: 5
@@ -1928,8 +1928,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1249931790}
-        m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
+      - m_Target: {fileID: 1249931795}
+        m_TargetAssemblyTypeName: LevelSelection, Assembly-CSharp
         m_MethodName: Load
         m_Mode: 5
         m_Arguments:
@@ -2098,8 +2098,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1249931790}
-        m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
+      - m_Target: {fileID: 1249931795}
+        m_TargetAssemblyTypeName: LevelSelection, Assembly-CSharp
         m_MethodName: ToggleMusic
         m_Mode: 1
         m_Arguments:
@@ -2122,7 +2122,7 @@ GameObject:
   - component: {fileID: 1249931793}
   - component: {fileID: 1249931792}
   - component: {fileID: 1249931791}
-  - component: {fileID: 1249931790}
+  - component: {fileID: 1249931795}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -2130,31 +2130,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1249931790
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1249931789}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a60cfc83ffebe9a45be897a5237d1679, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pauseMenu: {fileID: 902851975}
-  onMusic: {fileID: -663011761, guid: 0d0a3b4fe34d4564ba3708a72c674aa1, type: 3}
-  offMusic: {fileID: 53940023, guid: 0d0a3b4fe34d4564ba3708a72c674aa1, type: 3}
-  onSfx: {fileID: -213356348, guid: 0d0a3b4fe34d4564ba3708a72c674aa1, type: 3}
-  offSfx: {fileID: 1897002124, guid: 0d0a3b4fe34d4564ba3708a72c674aa1, type: 3}
-  music: {fileID: 1097287892}
-  sfx: {fileID: 2114470107}
-  DATA_KEY: 
-  level: 0
-  musicName: 
-  _boxSO: {fileID: 0}
-  _boxtypelist: []
-  _board: []
 --- !u!114 &1249931791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2212,6 +2187,26 @@ Transform:
   - {fileID: 2132335112}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1249931795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1249931789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bab34dee2a456b489fa1d434e4cafa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseMenu: {fileID: 902851975}
+  onMusic: {fileID: -663011761, guid: 0d0a3b4fe34d4564ba3708a72c674aa1, type: 3}
+  offMusic: {fileID: 53940023, guid: 0d0a3b4fe34d4564ba3708a72c674aa1, type: 3}
+  onSfx: {fileID: -213356348, guid: 0d0a3b4fe34d4564ba3708a72c674aa1, type: 3}
+  offSfx: {fileID: 1897002124, guid: 0d0a3b4fe34d4564ba3708a72c674aa1, type: 3}
+  music: {fileID: 1097287892}
+  sfx: {fileID: 2114470107}
+  musicName: 
 --- !u!1 &1293090025
 GameObject:
   m_ObjectHideFlags: 0
@@ -2497,7 +2492,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1249931790}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
         m_MethodName: Load
         m_Mode: 5
@@ -2816,7 +2811,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1249931790}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
         m_MethodName: Load
         m_Mode: 5
@@ -3083,7 +3078,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1249931790}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
         m_MethodName: Load
         m_Mode: 5
@@ -3215,8 +3210,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1249931790}
-        m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
+      - m_Target: {fileID: 1249931795}
+        m_TargetAssemblyTypeName: LevelSelection, Assembly-CSharp
         m_MethodName: pauseButton
         m_Mode: 1
         m_Arguments:
@@ -3348,8 +3343,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1249931790}
-        m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
+      - m_Target: {fileID: 1249931795}
+        m_TargetAssemblyTypeName: LevelSelection, Assembly-CSharp
         m_MethodName: resumeButton
         m_Mode: 1
         m_Arguments:
@@ -3667,8 +3662,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1249931790}
-        m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
+      - m_Target: {fileID: 1249931795}
+        m_TargetAssemblyTypeName: LevelSelection, Assembly-CSharp
         m_MethodName: ToggleSfx
         m_Mode: 1
         m_Arguments:
