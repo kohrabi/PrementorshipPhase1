@@ -1,5 +1,6 @@
 using DG.Tweening;
 using System.Collections;
+using UnityEditor.UI;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -61,7 +62,11 @@ public class ButtonScript : MonoBehaviour
     {
         if (IsChosen) state = ButtonState.Chosen;
 
-        if ((state == ButtonState.None) && isMouseOver)
+        if (name == "Button")
+        {
+            Debug.Log(state);
+        }
+        if (false)// && (state == ButtonState.None) && isMouseOver)
         {
             var mousePos = Camera.main.ScreenToViewportPoint(Input.mousePosition);
             mousePos.x = Mathf.Clamp01(mousePos.x);
@@ -98,6 +103,15 @@ public class ButtonScript : MonoBehaviour
     public void Intro()
     {
         if (state == ButtonState.Intro) return;
+        //float yRand = Random.Range(Screen.height / 1.5f, Screen.height / 1);
+        //if (Random.Range(0, 2) == 0)
+        //    yRand *= -1;
+        //Sprites.localPosition = new Vector3(Sprites.localPosition.x + Random.Range(-Screen.width / 2, Screen.width / 2), 
+        //                                    Sprites.localPosition.y + yRand, 
+        //                                    Sprites.localPosition.z);
+        Sprites.localPosition = new Vector3(Sprites.localPosition.x,// + Random.Range(-Screen.width / 2, Screen.width / 2),
+                                           Sprites.localPosition.y - Screen.height * 2, 
+                                           Sprites.localPosition.z);
         PlayIntroAnimation();
         state = ButtonState.Intro;
 
@@ -106,46 +120,63 @@ public class ButtonScript : MonoBehaviour
     public void OnPointerClick()
     {
         if (state == ButtonState.Chosen || state == ButtonState.Intro) return;
-        DOTween.Complete(HiddenFrame);
-        DOTween.Complete(Sprites);
+        if (!LevelManager.Instance.GetClick(this)) return;
         PlayOpenAnimation();
         state = ButtonState.Chosen;
     }
 
     public void OnPointerHover()
     {
+
         isMouseOver = true;
-        if (state == ButtonState.Chosen && !boxClose.IsActive())
+        if (state == ButtonState.Chosen && !shakingPlaying)// && !boxOpen.IsActive() && !boxClose.IsActive())
         {
             PlayHoverShakeAnimation();
         }
         if (state == ButtonState.Hover || 
             state == ButtonState.Chosen || 
-            state == ButtonState.Intro) return;
+            state == ButtonState.Intro || 
+            state == ButtonState.Correct) 
+            return;
         PlayPointerHoverAnimation();
         state = ButtonState.Hover;
     }
 
     public void OnPointerExit()
     {
+        /*
         if (isMouseOver && (state == ButtonState.None || state == ButtonState.Chosen))
         {
             HiddenFrame.DORotate(new Vector3(0, 0, 0), 0.2f)
                 .Play();
         }
+        */
         isMouseOver = false;
         if (state == ButtonState.Chosen || 
             state == ButtonState.Exit || 
-            state == ButtonState.Intro) return;
+            state == ButtonState.Intro ||
+            state == ButtonState.Correct) return;
         PlayPointerExitAnimation();
         state = ButtonState.Exit;
     }
-
+    
+    void CorrectComplete()
+    {
+        Sprites.gameObject.SetActive(false);
+        this.enabled = false;
+    }
     public void Correct()
     {
         if (state != ButtonState.Chosen || 
             state == ButtonState.Intro) return;
         PlayCorrectAnimation();
+        if (transform.parent != null)
+        {
+            if (transform.parent.TryGetComponent<GridScript>(out var grid))
+            {
+                grid.ShakeGridZ(0.4f, 3, 20);
+            }
+        }
         Completed = true;
         state = ButtonState.Correct;
     }
@@ -154,7 +185,14 @@ public class ButtonScript : MonoBehaviour
     {
         if (state != ButtonState.Chosen || 
             state == ButtonState.Intro) return;
-        PlayWrongAnimation();
+        PlayWrongAnimation(); 
+        if (transform.parent != null)
+        {
+            if (transform.parent.TryGetComponent<GridScript>(out var grid))
+            {
+                grid.ShakePosX(0.4f, 6, 10);
+            }
+        }
         state = ButtonState.Wrong;
     }
 
@@ -171,7 +209,12 @@ public class ButtonScript : MonoBehaviour
         HiddenFrame.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
         boxIntro = DOTween.Sequence(this);
 
+        boxIntro.SetDelay(transform.GetSiblingIndex() / 15f);
         boxIntro.Append(
+            Sprites.DOLocalMove(Vector3.zero, 0.6f)
+            .SetEase(Ease.OutQuad)
+            );
+        boxIntro.Join(
             HiddenFrame.DORotate(new Vector3(0, 0, 360), 1.5f)
             .SetEase(Ease.OutExpo)
             .SetRelative(true));
@@ -183,7 +226,6 @@ public class ButtonScript : MonoBehaviour
                 HiddenFrame.localScale = new Vector3(-1, 1, 1);
                 HiddenFrame.DOScale(1, 0.8f).SetEase(Ease.InOutBack).Play();
             }));
-
         boxIntro.OnComplete(SetState);
         boxIntro.Play();
     }
@@ -194,13 +236,22 @@ public class ButtonScript : MonoBehaviour
 
         boxCorrect = DOTween.Sequence(this);
         boxCorrect.Append(
-            Sprites.DORotate(new Vector3(0, 0, 370), 0.8f)
-            .SetEase(Ease.OutExpo)
-            .SetRelative());
+            Sprites.DOShakeRotation(0.3f, new Vector3(0f, 0, 20), 32)
+            .SetEase(Ease.InSine)
+            );
         boxCorrect.Join(
-            Sprites.DOScale(1.3f, 0.3f)
-            .SetEase(Ease.OutQuad)
-            .OnComplete(() => Sprites.DOScale(1f, 0.4f).SetDelay(0.3f).SetEase(Ease.OutBack).Play()));
+            Sprites.DOScale(1.4f, 0.2f)
+            .SetEase(Ease.OutBack)
+            );
+        boxCorrect.AppendInterval(0.2f);
+        boxCorrect.Append(
+            Sprites.DOLocalMoveY(Sprites.position.y + Screen.height * 2, 1f)
+            .SetEase(Ease.InOutBack)
+            );
+        boxCorrect.Join(
+            Sprites.DOScale(new Vector3(0.5f, 3f, 1f), 0.6f).SetDelay(0.3f)
+            .SetEase(Ease.OutQuart)
+            );
         //boxCorrect.Append(
         //    Sprites.DOScale(1, 0.2f)
         //    .SetEase(Ease.OutQuint)
@@ -208,7 +259,7 @@ public class ButtonScript : MonoBehaviour
         //animation.Append(
         //    Sprites.DORotate(new Vector3(0, 0, 20f), 0.4f)
         //    .SetEase(Ease.OutBounce));
-        boxCorrect.OnComplete(SetState);
+        boxCorrect.OnComplete(CorrectComplete);
         boxCorrect.Play();
     }
 
@@ -294,10 +345,6 @@ public class ButtonScript : MonoBehaviour
     {
         // Shaking
         PlayHoverShakeAnimation();
-        if (state == ButtonState.Chosen || boxPointerEnter.IsActive())
-        {
-            return;
-        }
         boxPointerEnter = DOTween.Sequence(this);
         boxPointerEnter.Append(
             Sprites.DOScale(1.2f, HoverAnimation)

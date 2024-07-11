@@ -143,26 +143,26 @@ public class LevelManager : MonoBehaviour
     private ButtonScript _box1;
     private ButtonScript _box2;
 
-    public void GetClick(ButtonScript button)
+    public bool GetClick(ButtonScript button)
     {
         //Khong duoc chon lai box cu
         if (_box1 == button)
-            return;
+            return false;
 
         //Vua chon 2 box thi ko the chon them box khac
         if (_box1 != null && _box2 != null)
-            return;
+            return false;
 
         //Chưa chọn đủ
         if (_box1 == null)
         {
             _box1 = button;
-            return;
+            return true;
         }
         _box2 = button;
  
         Invoke("XuLi2Box", 0.7f);   //Can delay de doi ca hai box duoc lat len
-        
+        return true;
     }
 
     public void XuLi2Box()             
