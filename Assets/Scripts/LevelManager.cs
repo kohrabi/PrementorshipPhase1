@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -151,29 +152,66 @@ public class LevelManager : MonoBehaviour
             return;
         }
         _box2 = button;
+ 
+        Invoke("XuLi2Box", 0.7f);   //Can delay de doi ca hai box duoc lat len
+        
+    }
 
+    public void XuLi2Box()             
+    {
         //Chọn sai
         if (_box2.buttonType.type != _box1.buttonType.type)
         {
-            //Đóng box1 và box2 (thêm hàm)
-            /*
-             
-             */
+            //Đóng box1 và box2 
+            _box2.Wrong();
+            _box1.Wrong();
+
 
             _box1 = null;
             _box2 = null;
             return;
         }
 
-        //Chọn đúng
-        //Cộng điểm
-        /*
-         GameManager.Instace.
-         */
+        //Chon dung
+        else
+        if (_box1 != _box2)    //Vo hieu va xoa box1 va box2 khoi list
+        {
+            //Animation chon dung
+            _box1.Correct();
+            _box2.Correct();
+
+            for (int i = 0; i < _board.Count; i++)
+            {
+                if (_board[i] == _box1 || _board[i] == _box2)
+                {
+                    _board.RemoveAt(i);
+                }
+            }
+
+            _box1 = null;
+            _box2 = null;
+
+            if (CheckWinCondition())
+                PlayerWin();
+            return;
+        }
+    }    
+
+    public bool CheckWinCondition()
+    {
+        return _board.Count == 0;
+    }
+
+    public void PlayerWin()
+    {
+        //Hien thong bao chien thang, hien so sao cua player, cho phep chuyen level...
+
+        Debug.Log("You win");
+        return;
     }
     #endregion Select And Compare Box
 
-
+    #region Khoi tao board
     void Shuffle(List<BoxClass> list)
     {
         for (int i = 0; i < list.Count; i++)
@@ -221,5 +259,6 @@ public class LevelManager : MonoBehaviour
 
         
     }
+    #endregion
 
 }
