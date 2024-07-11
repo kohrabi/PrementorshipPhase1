@@ -145,6 +145,14 @@ public class LevelManager : MonoBehaviour
 
     public void GetClick(ButtonScript button)
     {
+        //Khong duoc chon lai box cu
+        if (_box1 == button)
+            return;
+
+        //Vua chon 2 box thi ko the chon them box khac
+        if (_box1 != null && _box2 != null)
+            return;
+
         //Chưa chọn đủ
         if (_box1 == null)
         {
@@ -173,18 +181,19 @@ public class LevelManager : MonoBehaviour
         }
 
         //Chon dung
-        else
-        if (_box1 != _box2)    //Vo hieu va xoa box1 va box2 khoi list
+        else           
         {
             //Animation chon dung
             _box1.Correct();
             _box2.Correct();
 
+            //Xoa box1 va box2 khoi list
             for (int i = 0; i < _board.Count; i++)
             {
                 if (_board[i] == _box1 || _board[i] == _box2)
                 {
                     _board.RemoveAt(i);
+                    i--;                         //List rut phan tu xuong
                 }
             }
 
