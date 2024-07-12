@@ -37,6 +37,8 @@ public class LevelManager : MonoBehaviour
     [SerializeField] public List<BoxClass> _boxtypelist = new List<BoxClass>();        //Danh sach cac box khi duoc nhan doi
     public List<ButtonScript> _board = new List<ButtonScript>();     //Danh sach cac button
 
+    [SerializeField] private GameObject _youwonmenu;
+
     void Start()
     {
         AudioManager.Instance.PlayMusic(musicName);
@@ -214,7 +216,7 @@ public class LevelManager : MonoBehaviour
     public void PlayerWin()
     {
         //Hien thong bao chien thang, hien so sao cua player, cho phep chuyen level...
-
+        _youwonmenu.SetActive(true);
         Debug.Log("You win");
         return;
     }
