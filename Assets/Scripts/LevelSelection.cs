@@ -13,7 +13,7 @@ public class LevelSelection : MonoBehaviour
     void Start()
     {
 
-        AudioManager.Instance.PlayMusic(musicName);
+        if(AudioManager.Instance!=null) AudioManager.Instance.PlayMusic(musicName);
     
     Time.timeScale = 1;
         pauseMenu.SetActive(false);

@@ -17,7 +17,8 @@ public class AudioManager : MonoBehaviour
         else
         {
             _instance = this;
-          
+            DontDestroyOnLoad(gameObject);
+
         }
 
     }
@@ -25,9 +26,11 @@ public class AudioManager : MonoBehaviour
     #endregion Singleton
     public sound[] musicSounds, sfxSounds;
     public AudioSource musicSource, sfxSource;
+    public string musicName;
 
     private void Start()
     {
+        PlayMusic(musicName);
         musicSource.mute = GameManager.Instance.isMuteMusic();
         sfxSource.mute = GameManager.Instance.isMuteSfx();
        

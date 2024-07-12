@@ -41,7 +41,7 @@ public class LevelManager : MonoBehaviour
 
     void Start()
     {
-        AudioManager.Instance.PlayMusic(musicName);
+       if(AudioManager.Instance!=null) AudioManager.Instance.PlayMusic(musicName);
         if (PlayerPrefs.HasKey(DATA_KEY))
         {
             //nếu có
