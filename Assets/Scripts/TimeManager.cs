@@ -24,6 +24,7 @@ public class TimeManager : MonoBehaviour
     [SerializeField] private TMP_Text Clock;
     [SerializeField] private float Speed = 1f;
     private bool isTracking = false;
+    [SerializeField] private float _limittime;
 
     private void Start()
     {
@@ -71,7 +72,7 @@ public class TimeManager : MonoBehaviour
     {
         get
         {
-            float elapsedTime = (Time.time - StartingTime) * Speed;
+            float elapsedTime = (_limittime - (Time.time - StartingTime)) * Speed;
             int minutes = Mathf.FloorToInt(elapsedTime / 60f);
             int seconds = Mathf.FloorToInt(elapsedTime % 60f);
             return $"{minutes:00}:{seconds:00}";
