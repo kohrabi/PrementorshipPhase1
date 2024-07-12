@@ -6308,6 +6308,7 @@ MonoBehaviour:
   _boxSO: {fileID: 11400000, guid: 15d219555259be0408305c75d9a26e73, type: 2}
   _boxtypelist: []
   _board: []
+  _youwonmenu: {fileID: 1474946402}
 --- !u!4 &1784811195
 Transform:
   m_ObjectHideFlags: 0
