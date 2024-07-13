@@ -391,7 +391,7 @@ MonoBehaviour:
   HiddenFrame: {fileID: 5140254100372140233}
   Collider: {fileID: 2848462081928904014}
   ButtonSprite: {fileID: 0}
-  OpenCloseAnimation: 0.65
+  OpenCloseAnimation: 0.5
   ExitAnimation: 0.4
   HoverAnimation: 0.2
   ShakeAnimation: 0.2
