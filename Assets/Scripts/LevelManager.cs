@@ -26,7 +26,7 @@ public class LevelManager : MonoBehaviour
     #endregion Singleton
     [Header("Score")]
     [SerializeField] private ScoreAnimator scoreAnimator;
-    [SerializeField] private ScoreDatas scoreData;
+    [SerializeField] private ScoreData scoreData;
 
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private Sprite onMusic, offMusic, onSfx, offSfx;

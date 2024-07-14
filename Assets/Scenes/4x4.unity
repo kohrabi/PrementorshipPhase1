@@ -5872,7 +5872,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreAnimator: {fileID: 1620438757}
-  scoreData: {fileID: 11400000, guid: e5eee506a6dadfa41a787109495529ae, type: 2}
+  scoreData: {fileID: 11400000, guid: d75a7fa044225c342a663ffc7043ef8c, type: 2}
   pauseMenu: {fileID: 1394351325}
   onMusic: {fileID: -663011761, guid: 0d0a3b4fe34d4564ba3708a72c674aa1, type: 3}
   offMusic: {fileID: 53940023, guid: 0d0a3b4fe34d4564ba3708a72c674aa1, type: 3}

@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: ScoreDatas
-  m_EditorClassIdentifier: Assembly-CSharp::ScoreDatas
+  m_Script: {fileID: 11500000, guid: 9cecf4b55e93ce34184c0e64e6facd67, type: 3}
+  m_Name: ScoreData
+  m_EditorClassIdentifier: 
   ScoreList:
-  - Score: 100
+  - Score: 200
     Name: blabla
-  - Score: 50
+  - Score: 100
     Name: blablabla
