@@ -3954,6 +3954,7 @@ CanvasRenderer:
   m_GameObject: {fileID: 1229416986}
   m_CullTransparentMesh: 1
 --- !u!1 &1322832336
+
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6140,10 +6141,6 @@ MonoBehaviour:
   m_PixelsPerUnitMultiplier: 1
 --- !u!222 &1882988583
 CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1882988579}
   m_CullTransparentMesh: 1
 --- !u!1001 &1886287672
