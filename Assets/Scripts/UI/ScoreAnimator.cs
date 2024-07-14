@@ -9,6 +9,7 @@ public class ScoreAnimator : MonoBehaviour
 {
     [SerializeField] GameObject num;
     [SerializeField] public float CountDuration = 1;
+    [SerializeField] public float DelayBetweenScoreNum = 0.6f;
     public float CurrentScore = 0;
     public float TargetScore = 0;
 
@@ -44,7 +45,7 @@ public class ScoreAnimator : MonoBehaviour
                 var textAnimator = child.GetComponentInChildren<TextAnimator>();
                 if (textAnimator != null)
                 {
-                    textAnimator.Delay = i / 5f;
+                    textAnimator.Delay = i * DelayBetweenScoreNum;
                 }
             }
         }

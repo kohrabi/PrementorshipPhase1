@@ -395,8 +395,9 @@ MonoBehaviour:
   ExitAnimation: 0.4
   HoverAnimation: 0.2
   ShakeAnimation: 0.2
-  IsChosen: 0
+  OpenedCounter: 0
   Completed: 0
+  IsChosen: 0
 --- !u!114 &1792113404805389591
 MonoBehaviour:
   m_ObjectHideFlags: 0
