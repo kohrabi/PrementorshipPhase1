@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 0}
-  m_Name: Score
+  m_Name: ScoreDatas
   m_EditorClassIdentifier: Assembly-CSharp::ScoreDatas
   ScoreList:
   - Score: 100
     Name: blabla
-  - Score: 200
+  - Score: 50
     Name: blablabla

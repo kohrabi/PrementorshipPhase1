@@ -2189,7 +2189,6 @@ RectTransform:
   m_Children:
   - {fileID: 1384432284}
   - {fileID: 1842253440}
-  - {fileID: 1229416987}
   m_Father: {fileID: 1987490882}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
@@ -3835,12 +3834,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1229416986}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 842508895}
+  m_Father: {fileID: 1842253440}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -3954,7 +3953,6 @@ CanvasRenderer:
   m_GameObject: {fileID: 1229416986}
   m_CullTransparentMesh: 1
 --- !u!1 &1322832336
-
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4871,8 +4869,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.0024414062, y: -53.5}
-  m_SizeDelta: {x: -0.005249, y: 108}
+  m_AnchoredPosition: {x: 0, y: -49.889}
+  m_SizeDelta: {x: 0, y: 100.78}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1620438757
 MonoBehaviour:
@@ -5874,7 +5872,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreAnimator: {fileID: 1620438757}
-  scoreData: {fileID: 0}
+  scoreData: {fileID: 11400000, guid: e5eee506a6dadfa41a787109495529ae, type: 2}
   pauseMenu: {fileID: 1394351325}
   onMusic: {fileID: -663011761, guid: 0d0a3b4fe34d4564ba3708a72c674aa1, type: 3}
   offMusic: {fileID: 53940023, guid: 0d0a3b4fe34d4564ba3708a72c674aa1, type: 3}
@@ -5919,7 +5917,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StartingTime: 0
   EndingTime: 0
-  Clock: {fileID: 0}
+  Clock: {fileID: 234506296}
   Speed: 1
   _limittime: 300
 --- !u!224 &1823564117 stripped
@@ -5969,12 +5967,13 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1620438756}
+  - {fileID: 1229416987}
   m_Father: {fileID: 842508895}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -53.75}
-  m_SizeDelta: {x: 0, y: 107.5}
+  m_AnchoredPosition: {x: 0, y: -50.139}
+  m_SizeDelta: {x: 0, y: 100.277}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1842253441
 MonoBehaviour:
@@ -6141,6 +6140,10 @@ MonoBehaviour:
   m_PixelsPerUnitMultiplier: 1
 --- !u!222 &1882988583
 CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1882988579}
   m_CullTransparentMesh: 1
 --- !u!1001 &1886287672
