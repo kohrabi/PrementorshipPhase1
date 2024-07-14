@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "ScoreData", menuName ="ScriptableObjects/ScoreData")]
 public class ScoreDatas : ScriptableObject
 {
-	[SerializeField] public List<ScoreData> ScoreList = new List<ScoreData>();
+	[SerializeField] public List<ScoreData> ScoreList;
 
 	public ScoreData GetScore(int i)
 	{
