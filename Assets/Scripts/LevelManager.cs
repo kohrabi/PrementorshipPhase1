@@ -193,7 +193,7 @@ public class LevelManager : MonoBehaviour
             //Animation chon dung
             _box1.Correct();
             _box2.Correct();
-            scoreAnimator.TargetScore += scoreData.GetScore(Mathf.Min(_box1.OpenedCounter, _box2.OpenedCounter)).Score;
+            scoreAnimator.TargetScore += scoreData.GetScore(Mathf.Min(_box1.OpenedCounter, _box2.OpenedCounter) - 1).Score;
 
             //Xoa box1 va box2 khoi list
             for (int i = 0; i < _board.Count; i++)
