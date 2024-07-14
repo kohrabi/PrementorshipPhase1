@@ -20,8 +20,6 @@ public class ButtonScript : MonoBehaviour
     //De phan loai button//Khoi
     public BoxClass buttonType;
 
-
-
     [SerializeField] public Transform Text;
     [SerializeField] public Transform Sprites;
     [SerializeField] public Transform HiddenFrame;
@@ -34,8 +32,9 @@ public class ButtonScript : MonoBehaviour
     [SerializeField] public float ShakeAnimation = 0.4f;
     
     ButtonState state; // Trang thai cua button
-    public bool IsChosen = false;
-    public bool Completed = false;
+    [HideInInspector] public int OpenedCounter = 0;
+    [HideInInspector] public bool Completed = false;
+    [HideInInspector] public bool IsChosen = false;
     bool isMouseOver = false;
 
     Sequence boxPointerEnter;
@@ -62,10 +61,6 @@ public class ButtonScript : MonoBehaviour
     {
         if (IsChosen) state = ButtonState.Chosen;
 
-        if (name == "Button")
-        {
-            Debug.Log(state);
-        }
         if (false)// && (state == ButtonState.None) && isMouseOver)
         {
             var mousePos = Camera.main.ScreenToViewportPoint(Input.mousePosition);
@@ -122,6 +117,7 @@ public class ButtonScript : MonoBehaviour
         if (state == ButtonState.Chosen || state == ButtonState.Intro) return;
         if (!LevelManager.Instance.GetClick(this)) return;
         PlayOpenAnimation();
+        OpenedCounter++;
         state = ButtonState.Chosen;
     }
 

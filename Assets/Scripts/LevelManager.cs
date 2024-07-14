@@ -24,12 +24,17 @@ public class LevelManager : MonoBehaviour
 
     }
     #endregion Singleton
+    [Header("Score")]
+    [SerializeField] private ScoreAnimator scoreAnimator;
+    [SerializeField] private ScoreDatas scoreData;
+
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private Sprite onMusic, offMusic, onSfx, offSfx;
     [SerializeField] private Button music, sfx;
     [SerializeField] private string DATA_KEY;
     [SerializeField] private int level;
     [SerializeField] private string musicName;
+    [SerializeField] public int MoveCounter;
     private float time;
     private LevelData _levelData;
      
@@ -58,11 +63,11 @@ public class LevelManager : MonoBehaviour
         }
         Time.timeScale = 1;
         pauseMenu.SetActive(false);
-        UpdateUI();
         //TimeManager.Instance.StartTracking();
         time = 0;
 
         InitBoard();
+        UpdateUI();
         
     }
 
@@ -162,20 +167,20 @@ public class LevelManager : MonoBehaviour
             return true;
         }
         _box2 = button;
- 
+
         Invoke("XuLi2Box", 0.7f);   //Can delay de doi ca hai box duoc lat len
         return true;
     }
 
-    public void XuLi2Box()             
+    public void XuLi2Box()
     {
+        MoveCounter++;
         //Chọn sai
         if (_box2.buttonType.type != _box1.buttonType.type)
         {
             //Đóng box1 và box2 
             _box2.Wrong();
             _box1.Wrong();
-
 
             _box1 = null;
             _box2 = null;
@@ -188,6 +193,7 @@ public class LevelManager : MonoBehaviour
             //Animation chon dung
             _box1.Correct();
             _box2.Correct();
+            scoreAnimator.TargetScore += scoreData.GetScore(Mathf.Min(_box1.OpenedCounter, _box2.OpenedCounter)).Score;
 
             //Xoa box1 va box2 khoi list
             for (int i = 0; i < _board.Count; i++)

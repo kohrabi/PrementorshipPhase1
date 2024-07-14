@@ -4947,6 +4947,7 @@ GameObject:
   - component: {fileID: 1187712757}
   - component: {fileID: 1187712756}
   - component: {fileID: 1187712755}
+  - component: {fileID: 1187712758}
   m_Layer: 5
   m_Name: Game scene
   m_TagString: Untagged
@@ -5338,6 +5339,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1222718574}
   m_CullTransparentMesh: 1
+--- !u!114 &1187712758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1187712753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9feb6a748838c14d9aa33a669469e89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  curr: {fileID: 0}
 --- !u!1001 &1231920065
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5655,6 +5669,7 @@ MonoBehaviour:
   DATA_KEY: 
   level: 0
   musicName: mucsic4
+  MoveCounter: 0
   _boxSO: {fileID: 0}
   _boxtypelist: []
   _board: []
