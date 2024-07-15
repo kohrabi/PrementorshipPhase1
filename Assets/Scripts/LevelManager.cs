@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
@@ -35,6 +36,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private int level;
     [SerializeField] private string musicName;
     [SerializeField] public int MoveCounter;
+    [SerializeField] private TMP_Text Current,YouWin;
     private float time;
     private LevelData _levelData;
      
@@ -91,6 +93,7 @@ public class LevelManager : MonoBehaviour
     public int getLv() { return level; }
     public void pauseButton()
     {
+        Current.text = "Time: " + TimeManager.Instance.CurrentTimeString + " Move: " + MoveCounter.ToString() + " Score: " + scoreAnimator.TargetScore.ToString();
         Time.timeScale = 0f;
         pauseMenu.SetActive(true);
     }
@@ -221,6 +224,7 @@ public class LevelManager : MonoBehaviour
 
     public void PlayerWin()
     {
+        YouWin.text = "Time: " + TimeManager.Instance.CurrentTimeString+" Move: "+ MoveCounter.ToString() + " Score: " + scoreAnimator.TargetScore.ToString();
         //Hien thong bao chien thang, hien so sao cua player, cho phep chuyen level...
         _youwonmenu.SetActive(true);
         Debug.Log("You win");

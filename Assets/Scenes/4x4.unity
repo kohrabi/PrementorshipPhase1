@@ -3890,7 +3890,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1784811194}
         m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
         m_MethodName: PlaySfx
         m_Mode: 5
@@ -3902,7 +3902,7 @@ MonoBehaviour:
           m_StringArgument: select
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1784811194}
         m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
         m_MethodName: pauseButton
         m_Mode: 1
@@ -4056,7 +4056,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: 6x6
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1322832339
@@ -5884,6 +5884,8 @@ MonoBehaviour:
   level: 0
   musicName: music3
   MoveCounter: 0
+  Current: {fileID: 877869804}
+  YouWin: {fileID: 1718215508}
   _boxSO: {fileID: 11400000, guid: 15d219555259be0408305c75d9a26e73, type: 2}
   _boxtypelist: []
   _board: []
@@ -6106,6 +6108,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: select
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1784811194}
+        m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
+        m_MethodName: Load
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 4x4
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1882988582
