@@ -1,20 +1,19 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "ScoreData", menuName = "ScriptableObjects/ScoreData")]
-public class ScoreDatas : ScriptableObject
+public class ScoreData : ScriptableObject
 {
-    [SerializeField] public List<ScoreData> ScoreList;
+    [SerializeField] public List<ScoreDataStruct> ScoreList;
 
-    public ScoreData GetScore(int i)
+    public ScoreDataStruct GetScore(int i)
     {
         return ScoreList[Mathf.Clamp(i, 0, ScoreList.Count - 1)];
     }
 }
 
 [System.Serializable]
-public class ScoreData
+public class ScoreDataStruct
 {
     public int Score = 0;
     public string Name = "";
