@@ -15,5 +15,5 @@ public class Level_Info
     public int Level; //So thu tu cua level
     public int Time; //second
     public int MaxMove;
-    public int Size;
+    public int Size; //4 hoac 6
 }
