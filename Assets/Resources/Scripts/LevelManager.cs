@@ -50,9 +50,12 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject _youwonmenu;
     [SerializeField] private GameObject _youlosemenu;
 
+
+    //info cua level
+    public Level_Info lv_info;
+
     void Start()
     {
-        CurrentLevel = 1;
         InitLevel();
         if (AudioManager.Instance != null) AudioManager.Instance.PlayMusic(musicName);
         if (PlayerPrefs.HasKey(DATA_KEY))
