@@ -6669,7 +6669,6 @@ MonoBehaviour:
   music: {fileID: 196960791}
   sfx: {fileID: 816162338}
   DATA_KEY: 
-  level: 0
   musicName: music3
   MoveCounter: 0
   Current: {fileID: 877869804}
@@ -6678,8 +6677,14 @@ MonoBehaviour:
   _boxtypelist: []
   _board: []
   Board_GameObject: {fileID: 1187712753}
+  box_prefab: {fileID: 5030711167925667501, guid: 16f8cdf5db771f84fb814ad132856b80, type: 3}
   _youwonmenu: {fileID: 995990004}
   _youlosemenu: {fileID: 188374475}
+  lv_info:
+    Level: 0
+    Time: 0
+    MaxMove: 0
+    Size: 0
   levelSO: {fileID: 11400000, guid: 234409c060d4d8543a9d75517087071d, type: 2}
 --- !u!4 &1784811195
 Transform:
@@ -6712,7 +6717,6 @@ MonoBehaviour:
   EndingTime: 0
   Clock: {fileID: 234506296}
   Speed: 1
-  _limittime: 120
 --- !u!224 &1823564117 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7177220207050653237, guid: 16f8cdf5db771f84fb814ad132856b80, type: 3}

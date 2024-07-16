@@ -48,6 +48,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] public List<BoxClass> _boxtypelist = new List<BoxClass>(); //Danh sach cac box khi duoc nhan doi
     public List<ButtonScript> _board = new List<ButtonScript>(); //Danh sach cac button
     [SerializeField] private GameObject Board_GameObject;
+    [SerializeField] private GameObject box_prefab;
 
     [SerializeField] private GameObject _youwonmenu;
     [SerializeField] private GameObject _youlosemenu;
@@ -58,6 +59,7 @@ public class LevelManager : MonoBehaviour
 
     void Start()
     {
+        CurrentLevel = 2;
         InitLevel();
         if (AudioManager.Instance != null) AudioManager.Instance.PlayMusic(musicName);
         if (PlayerPrefs.HasKey(DATA_KEY))
@@ -284,14 +286,24 @@ public class LevelManager : MonoBehaviour
     void InitBoard()
     {
         //Them cac button vao _board
-        GameObject[] objects = GameObject.FindGameObjectsWithTag("PuzzleButton");
-        for (int i = 0; i < objects.Length; i++)
+        //GameObject[] objects = GameObject.FindGameObjectsWithTag("PuzzleButton");
+        //for (int i = 0; i < objects.Length; i++)
+        //{
+        //    _board.Add(objects[i].GetComponent<ButtonScript>());
+        //}
+
+        foreach (Transform child in Board_GameObject.transform)
         {
-            _board.Add(objects[i].GetComponent<ButtonScript>());
+            Destroy(child.gameObject);
+        }
+        for (int i = 0; i < lv_info.Size * lv_info.Size; i++)
+        {
+            GameObject box = Instantiate(box_prefab, Board_GameObject.transform);
+            _board.Add(box.GetComponent<ButtonScript>());
         }
 
         //Chuyen box trong scriptable object vao list va random
-        for (int i = 0; i < objects.Length / 2; i++)
+        for (int i = 0; i < _board.Count / 2; i++)
         {
             _boxtypelist.Add(_boxSO.BoxTypeList[i]);
             _boxtypelist.Add(_boxSO.BoxTypeList[i]); //Nhan doi so box
@@ -300,7 +312,7 @@ public class LevelManager : MonoBehaviour
         Shuffle(_boxtypelist); //Random cac box
 
         //Gan box vao cac button
-        for (int i = 0; i < objects.Length; i++)
+        for (int i = 0; i < _board.Count; i++)
         {
             _board[i].buttonType = _boxtypelist[i];
 
