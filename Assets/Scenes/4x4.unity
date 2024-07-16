@@ -6678,6 +6678,7 @@ MonoBehaviour:
   _boxtypelist: []
   _board: []
   _youwonmenu: {fileID: 995990004}
+  _youlosemenu: {fileID: 188374475}
 --- !u!4 &1784811195
 Transform:
   m_ObjectHideFlags: 0
@@ -6709,7 +6710,7 @@ MonoBehaviour:
   EndingTime: 0
   Clock: {fileID: 234506296}
   Speed: 1
-  _limittime: 300
+  _limittime: 120
 --- !u!224 &1823564117 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7177220207050653237, guid: 16f8cdf5db771f84fb814ad132856b80, type: 3}
