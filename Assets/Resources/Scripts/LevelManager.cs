@@ -1,10 +1,12 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class LevelManager : MonoBehaviour
 {
@@ -245,7 +247,9 @@ public class LevelManager : MonoBehaviour
     public void InitLevel()
     {
         GridLayoutGroup grid = Board_GameObject.GetComponent<GridLayoutGroup>();
-        Level_Info lv_info = levelSO.lv_InfoList[CurrentLevel - 1];
+        if (CurrentLevel - 1 < 0)
+            throw new Exception("Level khong hop le.");
+        lv_info = levelSO.lv_InfoList[CurrentLevel - 1];
         switch (lv_info.Size)
         {
             case 4:
@@ -259,7 +263,6 @@ public class LevelManager : MonoBehaviour
                 grid.spacing = new Vector2(15f, 15f);
                 break;
         }
-        Debug.Log(lv_info.Time);
         TimeManager.Instance._limittime = lv_info.Time;
     }
 
