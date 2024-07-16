@@ -3348,7 +3348,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &995990005
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4004,7 +4004,7 @@ GameObject:
   - component: {fileID: 1187712756}
   - component: {fileID: 1187712755}
   m_Layer: 5
-  m_Name: Game scene
+  m_Name: Board
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6677,8 +6677,10 @@ MonoBehaviour:
   _boxSO: {fileID: 11400000, guid: 15d219555259be0408305c75d9a26e73, type: 2}
   _boxtypelist: []
   _board: []
+  Board_GameObject: {fileID: 1187712753}
   _youwonmenu: {fileID: 995990004}
   _youlosemenu: {fileID: 188374475}
+  levelSO: {fileID: 11400000, guid: 234409c060d4d8543a9d75517087071d, type: 2}
 --- !u!4 &1784811195
 Transform:
   m_ObjectHideFlags: 0

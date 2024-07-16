@@ -24,10 +24,11 @@ public class TimeManager : MonoBehaviour
     [SerializeField] private TMP_Text Clock;
     [SerializeField] private float Speed = 1f;
     private bool isTracking = false;
-    [SerializeField] private float _limittime;
+    public float _limittime { get; set; }
 
     private void Start()
     {
+        StartTracking();
         Clock.text = CurrentTimeString;
     }
 
