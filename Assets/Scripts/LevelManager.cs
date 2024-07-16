@@ -45,6 +45,7 @@ public class LevelManager : MonoBehaviour
     public List<ButtonScript> _board = new List<ButtonScript>();     //Danh sach cac button
 
     [SerializeField] private GameObject _youwonmenu;
+    [SerializeField] private GameObject _youlosemenu;
 
     void Start()
     {
@@ -216,20 +217,6 @@ public class LevelManager : MonoBehaviour
             return;
         }
     }    
-
-    public bool CheckWinCondition()
-    {
-        return _board.Count == 0;
-    }
-
-    public void PlayerWin()
-    {
-        YouWin.text = "Time: " + TimeManager.Instance.CurrentTimeString+" Move: "+ MoveCounter.ToString() + " Score: " + scoreAnimator.TargetScore.ToString();
-        //Hien thong bao chien thang, hien so sao cua player, cho phep chuyen level...
-        _youwonmenu.SetActive(true);
-        Debug.Log("You win");
-        return;
-    }
     #endregion Select And Compare Box
 
     #region Khoi tao board
@@ -282,4 +269,25 @@ public class LevelManager : MonoBehaviour
     }
     #endregion
 
+    #region End Game
+    public bool CheckWinCondition()
+    {
+        return _board.Count == 0;
+    }
+
+    public void PlayerWin()
+    {
+        YouWin.text = "Time: " + TimeManager.Instance.CurrentTimeString + " Move: " + MoveCounter.ToString() + " Score: " + scoreAnimator.TargetScore.ToString();
+        //Hien thong bao chien thang, hien so sao cua player, cho phep chuyen level...
+        _youwonmenu.SetActive(true);
+        Debug.Log("You win");
+        return;
+    }
+    
+    public void PlayerLose()
+    {
+        if(!CheckWinCondition())
+        _youlosemenu.SetActive(true);
+    }
+    #endregion EndGame
 }

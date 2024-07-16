@@ -33,7 +33,12 @@ public class TimeManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Clock.text = CurrentTimeString;
+        if (!IsOutOfTime())
+        {
+            Clock.text = CurrentTimeString;
+        }
+        else
+            LevelManager.Instance.PlayerLose();
     }
 
     public void StartTracking()
@@ -77,5 +82,10 @@ public class TimeManager : MonoBehaviour
             int seconds = Mathf.FloorToInt(elapsedTime % 60f);
             return $"{minutes:00}:{seconds:00}";
         }
+    }
+
+    public bool IsOutOfTime()
+    {
+        return ((_limittime - (Time.time - StartingTime)) <= 0);
     }
 }
