@@ -171,7 +171,7 @@ public class ButtonScript : MonoBehaviour
         {
             if (transform.parent.TryGetComponent<GridScript>(out var grid))
             {
-                grid.ShakeGridZ(0.4f, 3, 20);
+                grid.ShakeGridZ(0.4f, 6, 10);
             }
         }
         Completed = true;
@@ -187,7 +187,7 @@ public class ButtonScript : MonoBehaviour
         {
             if (transform.parent.TryGetComponent<GridScript>(out var grid))
             {
-                grid.ShakePosX(0.4f, 6, 10);
+                grid.ShakePosX(0.4f, 20, 10);
             }
         }
         state = ButtonState.Wrong;
@@ -262,7 +262,7 @@ public class ButtonScript : MonoBehaviour
 
         boxCorrect = DOTween.Sequence(this);
         boxCorrect.Append(
-            Sprites.DOShakeRotation(0.3f, new Vector3(0f, 0, 20), 32)
+            Sprites.DOPunchRotation(new Vector3(0f, 0, 20), 0.3f, 32)
             .SetEase(Ease.InSine)
             );
         boxCorrect.Join(
@@ -291,7 +291,7 @@ public class ButtonScript : MonoBehaviour
 
     private void PlayWrongAnimation()
     {
-        Sprites.DOShakePosition(ShakeAnimation, new Vector3(25, 0), 20)
+        Sprites.DOPunchRotation(new Vector3(25, 0), ShakeAnimation, 20)
             .Play()
             .OnComplete(() =>
             {
@@ -353,14 +353,14 @@ public class ButtonScript : MonoBehaviour
             if (state == ButtonState.Chosen)
             {
                 shakingPlaying = true;
-                Sprites.DOShakeRotation(0.2f, new Vector3(0f, 0, 10), 20)
+                Sprites.DOPunchRotation(new Vector3(0f, 0, 10), 0.2f, 20)
                     .Play()
                     .OnComplete(() => shakingPlaying = false);
             }
             else
             {
                 shakingPlaying = true;
-                Sprites.DOShakeRotation(0.2f, new Vector3(10f, 0, 0), 20)
+                Sprites.DOPunchRotation(new Vector3(10f, 0, 0), 0.2f, 20)
                     .Play()
                     .OnComplete(() => shakingPlaying = false);
             }

@@ -41,5 +41,10 @@ public class CounterAnimator : MonoBehaviour
         animation.Append(
             transform.DOScale(1, 0.2f)
             .SetEase(Ease.OutBack));
+        animation.Join(
+            transform.DOPunchRotation(new Vector3(0, 0, 10), 0.3f, 10)
+            .SetEase(Ease.InSine)
+            );
+
     }
 }

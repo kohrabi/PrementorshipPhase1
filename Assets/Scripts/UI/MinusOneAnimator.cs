@@ -19,6 +19,10 @@ public class MinusOneAnimator : MonoBehaviour
             transform.DOLocalMoveY(rectTransform.rect.height, 0.3f)
             .SetEase(Ease.OutBack)
         );
+        animation.Join(
+            transform.DOPunchRotation(new Vector3(0, 0, 10), 0.3f)
+            .SetEase(Ease.InSine)
+        );
         animation.AppendInterval(0.8f);
         animation.Append(
             transform.DOLocalMoveY(transform.position.y + Screen.height * 2.0f, 1f)

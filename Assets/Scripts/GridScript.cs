@@ -11,18 +11,18 @@ public class GridScript : MonoBehaviour
     {
         if (shakeRotZ.IsActive())
             return;
-        shakeRotZ = transform.DOShakeRotation(duration, new Vector3(0, 0, zRot), vibrato)
-            .SetEase(Ease.OutQuad)
+        shakeRotZ = transform.DOPunchRotation(new Vector3(0, 0, zRot), duration, vibrato)
+            //.SetEase(Ease.InSine)
             .Play()
-            .OnComplete(() => transform.DORotate(new Vector3(0, 0, 0), 0.2f).SetEase(Ease.OutQuad).Play() );
+            .OnComplete(() => transform.DORotate(new Vector3(0, 0, 0), 0.2f).Play() );
     }
 
     public void ShakePosX(float duration, float xPos, int vibrato)
     {
         if (shakePosZ.IsActive())
             return;
-        shakePosZ = transform.DOShakePosition(duration, new Vector3(xPos, 0, 0), vibrato)
-            .SetEase(Ease.OutQuad)
+        shakePosZ = transform.DOPunchPosition(new Vector3(xPos, 0, 0), duration, vibrato)
+            //.SetEase(Ease.InSine)
             .Play();
     }
 }

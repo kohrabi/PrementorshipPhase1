@@ -64,8 +64,8 @@ public class ScoreAnimator : MonoBehaviour
     {
 
         if (shake.IsActive()) return;
-        shake = transform.DOShakeRotation(0.2f, new Vector3(0, 0, 10), 30)
-             .SetEase(Ease.InSine)
+        shake = transform.DOPunchRotation(new Vector3(0, 0, 5), 0.2f, 10)
+             .SetEase(Ease.OutSine)
              .Play();
     }
 }
