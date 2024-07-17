@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     private GameData _gameData;
     public const string DATA_KEY = "DATA_KEY";
+    public int LevelIndex = 0;
     void Start()
     {
 

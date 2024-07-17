@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,10 +16,10 @@ public class LevelSelection : MonoBehaviour
 
         if(AudioManager.Instance!=null) AudioManager.Instance.PlayMusic(musicName);
     
-    Time.timeScale = 1;
-        pauseMenu.SetActive(false);
-        UpdateUI();
-}
+        Time.timeScale = 1;
+            pauseMenu.SetActive(false);
+            UpdateUI();
+    }
 
     public void pauseButton()
     {
@@ -32,7 +33,8 @@ public class LevelSelection : MonoBehaviour
     }
     public void Load(string name)
     {
-        SceneController.Instance.LoadScene(name);
+        GameManager.Instance.LevelIndex = Int32.Parse(name);
+        SceneController.Instance.LoadScene("GameScene");
     }
     public void PlayMusic(string name)
     {

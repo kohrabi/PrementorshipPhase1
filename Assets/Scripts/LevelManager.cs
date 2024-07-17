@@ -59,7 +59,10 @@ public class LevelManager : MonoBehaviour
 
     void Start()
     {
-        CurrentLevel = 2;
+        if (GameManager.Instance != null)
+            CurrentLevel = Mathf.Clamp(GameManager.Instance.LevelIndex, 0, levelSO.lv_InfoList.Count - 1);
+        else
+            CurrentLevel = 0;
         InitLevel();
         if (AudioManager.Instance != null) AudioManager.Instance.PlayMusic(musicName);
         if (PlayerPrefs.HasKey(DATA_KEY))
@@ -249,9 +252,8 @@ public class LevelManager : MonoBehaviour
     public void InitLevel()
     {
         GridLayoutGroup grid = Board_GameObject.GetComponent<GridLayoutGroup>();
-        if (CurrentLevel - 1 < 0)
-            throw new Exception("Level khong hop le.");
-        lv_info = levelSO.lv_InfoList[CurrentLevel - 1];
+        // CurrentLevel da duoc clamp
+        lv_info = levelSO.lv_InfoList[CurrentLevel];
         switch (lv_info.Size)
         {
             case 4:
@@ -292,10 +294,6 @@ public class LevelManager : MonoBehaviour
         //    _board.Add(objects[i].GetComponent<ButtonScript>());
         //}
 
-        foreach (Transform child in Board_GameObject.transform)
-        {
-            Destroy(child.gameObject);
-        }
         for (int i = 0; i < lv_info.Size * lv_info.Size; i++)
         {
             GameObject box = Instantiate(box_prefab, Board_GameObject.transform);

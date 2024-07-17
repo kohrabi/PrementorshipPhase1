@@ -26,7 +26,8 @@ public class ButtonScript : MonoBehaviour
     [SerializeField] public RectTransform Collider;
     [SerializeField] public Image ButtonSprite;
     [Header("Animation Time")]
-    [SerializeField] public float OpenCloseAnimation = 0.4f;
+    [SerializeField] public float OpenCloseAnimation = 0.4f; 
+    [SerializeField] public float WaitOpen = 0.5f;
     [SerializeField] public float ExitAnimation = 0.4f;
     [SerializeField] public float HoverAnimation = 0.4f;
     [SerializeField] public float ShakeAnimation = 0.4f;
@@ -205,26 +206,55 @@ public class ButtonScript : MonoBehaviour
         HiddenFrame.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
         boxIntro = DOTween.Sequence(this);
 
-        boxIntro.SetDelay(transform.GetSiblingIndex() / 15f);
+        const float timeMul = 1f;
+        const float childDelay = 15f; // magic number
+
+        boxIntro.SetDelay(transform.GetSiblingIndex() / childDelay);
         boxIntro.Append(
-            Sprites.DOLocalMove(Vector3.zero, 0.6f)
+            Sprites.DOLocalMove(Vector3.zero, 0.6f * timeMul)
             .SetEase(Ease.OutQuad)
             );
         boxIntro.Join(
-            HiddenFrame.DORotate(new Vector3(0, 0, 360), 1.5f)
+            HiddenFrame.DORotate(new Vector3(0, 0, 360), 1.5f * timeMul)
             .SetEase(Ease.OutExpo)
             .SetRelative(true));
         boxIntro.Join(
-            HiddenFrame.DOScale(0, 0.1f)
+            HiddenFrame.DOScale(0, 0.1f * timeMul)
             .SetEase(Ease.OutSine)
             .OnComplete(() =>
             {
                 HiddenFrame.localScale = new Vector3(-1, 1, 1);
-                HiddenFrame.DOScale(1, 0.8f).SetEase(Ease.InOutBack).Play();
+                HiddenFrame.DOScale(1, 0.8f * timeMul).SetEase(Ease.InOutBack).Play();
             }));
+        // Play open Animation
+        boxIntro.AppendInterval(transform.parent.childCount / childDelay);
+
+        boxIntro.Append(
+            HiddenFrame.DORotate(new Vector3(0, 90, 0), OpenCloseAnimation / 2)
+            .SetEase(Ease.OutCubic)
+            .OnComplete(() => HiddenFrame.gameObject.SetActive(false)));
+        //animation.Join(HiddenFrame.DOShakeRotation(0.2f, new Vector3(0, 0f, 20f), 20));
+        boxIntro.Append(
+            Sprites.DOLocalRotate(new Vector3(0, 0, 0), OpenCloseAnimation / 2)
+            .SetEase(Ease.OutCubic));
+        boxIntro.Join(
+            Sprites.DOScale(1, ExitAnimation)
+                .SetEase(Ease.OutQuint)
+        );
+        // Play close animation
+        boxIntro.AppendInterval(transform.parent.childCount / childDelay / 2);
+        boxIntro.Append(
+            Sprites.DOLocalRotate(new Vector3(0, 90, 0), OpenCloseAnimation / 2)
+            .SetEase(Ease.OutCubic)
+            .OnComplete(() => HiddenFrame.gameObject.SetActive(true)));
+        //animation.Join(Sprites.DOShakeRotation(OpenCloseAnimation / 3, new Vector3(0, 0f, 40f), 20));
+        boxIntro.Append(
+            HiddenFrame.DORotate(new Vector3(0, 0, 0), OpenCloseAnimation / 2)
+            .SetEase(Ease.OutCubic));
+
         boxIntro.OnComplete(SetState);
         boxIntro.Play();
-    }
+    }   
 
     private void PlayCorrectAnimation()
     {

@@ -166,10 +166,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 7177220207050653237}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3086729184364184151
 CanvasRenderer:
@@ -241,10 +241,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1760415080098871951}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6460144937191800650
 CanvasRenderer:
@@ -317,10 +317,10 @@ RectTransform:
   - {fileID: 5140254100372140233}
   m_Father: {fileID: 7177220207050653237}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &5030711167925667501
 GameObject:
@@ -392,6 +392,7 @@ MonoBehaviour:
   Collider: {fileID: 2848462081928904014}
   ButtonSprite: {fileID: 0}
   OpenCloseAnimation: 0.5
+  WaitOpen: 0.5
   ExitAnimation: 0.4
   HoverAnimation: 0.2
   ShakeAnimation: 0.2
@@ -491,10 +492,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1760415080098871951}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4222963072776765539
 CanvasRenderer:
