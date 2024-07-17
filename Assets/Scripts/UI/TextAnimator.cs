@@ -29,7 +29,7 @@ public class TextAnimator : MonoBehaviour
     void Update()
     {
         if (RotateSpeed != 0)
-            transform.rotation = Quaternion.Euler(new Vector3(0, 0, RotateAngle * Mathf.Sin(RotateSpeed * Time.time)));
+            transform.localRotation = Quaternion.Euler(new Vector3(0, 0, RotateAngle * Mathf.Sin(RotateSpeed * Time.time)));
         // min = 0, max = 2
         // Sin(Time.time) + 1;
         // min = 0, max = 4

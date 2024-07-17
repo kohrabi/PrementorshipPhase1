@@ -56,6 +56,7 @@ public class LevelManager : MonoBehaviour
 
     //info cua level
     public Level_Info lv_info;
+    int comboCount = 0;
 
     void Start()
     {
@@ -212,6 +213,7 @@ public class LevelManager : MonoBehaviour
             //Đóng box1 và box2 
             _box2.Wrong();
             _box1.Wrong();
+            comboCount = 0;
 
             _box1 = null;
             _box2 = null;
@@ -223,7 +225,8 @@ public class LevelManager : MonoBehaviour
             _box1.Correct();
             _box2.Correct();
             scoreAnimator.TargetScore +=
-                scoreData.GetScore(Mathf.Min(_box1.OpenedCounter, _box2.OpenedCounter) - 1).Score;
+                scoreData.GetScore(comboCount).Score;
+            comboCount++;
 
             //Xoa box1 va box2 khoi list
             for (int i = 0; i < _board.Count; i++)

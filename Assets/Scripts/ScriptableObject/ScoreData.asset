@@ -13,7 +13,15 @@ MonoBehaviour:
   m_Name: ScoreData
   m_EditorClassIdentifier: 
   ScoreList:
-  - Score: 200
+  - Score: 50
     Name: blabla
   - Score: 100
+    Name: blablabla
+  - Score: 200
+    Name: blablabla
+  - Score: 500
+    Name: blablabla
+  - Score: 800
+    Name: blablabla
+  - Score: 1000
     Name: blablabla

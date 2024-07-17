@@ -1,3 +1,5 @@
+using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -12,12 +14,17 @@ public class ScoreAnimator : MonoBehaviour
     [SerializeField] public float DelayBetweenScoreNum = 0.6f;
     public float CurrentScore = 0;
     public float TargetScore = 0;
+    bool shaking = false;
+    Tween shake;
 
 
     void Update()
     {
         if (Mathf.CeilToInt(TargetScore) != Mathf.CeilToInt(CurrentScore))
         {
+            if (shaking)
+                ShakeScore();
+            shaking = true;
             float rate = Mathf.Abs(TargetScore - CurrentScore) / CountDuration;
             CurrentScore = Mathf.MoveTowards(CurrentScore, TargetScore, rate * Time.deltaTime);
             string scoreString = Mathf.CeilToInt(CurrentScore).ToString();
@@ -49,6 +56,16 @@ public class ScoreAnimator : MonoBehaviour
                 }
             }
         }
-        
+        else
+            shaking = false;
+
+    }
+    public void ShakeScore()
+    {
+
+        if (shake.IsActive()) return;
+        shake = transform.DOShakeRotation(0.2f, new Vector3(0, 0, 10), 30)
+             .SetEase(Ease.InSine)
+             .Play();
     }
 }
