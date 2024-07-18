@@ -15,25 +15,55 @@ MonoBehaviour:
   BoxTypeList:
   - Name: 
     type: 0
-    icon: {fileID: 21300000, guid: 62b4466859000554b95b6817efc16d42, type: 3}
+    icon: {fileID: 21300000, guid: d3c1db53c52214b6b95bdc1d77d8dd82, type: 3}
   - Name: 
     type: 1
-    icon: {fileID: 21300000, guid: 6e3d4336afae42042824404fb571127f, type: 3}
+    icon: {fileID: 21300000, guid: 56e9f957518374b089cdd16a8ac60309, type: 3}
   - Name: 
     type: 2
-    icon: {fileID: 21300000, guid: 714c7c23fc95c8b4c89d73d92ca392e7, type: 3}
+    icon: {fileID: 21300000, guid: 04aca0d0b21634535b9273bc6be45f48, type: 3}
   - Name: 
     type: 3
-    icon: {fileID: 21300000, guid: a683b71ee7e887c47ac8d0457c60fa90, type: 3}
+    icon: {fileID: 21300000, guid: c80caed0584a94e6f83650f85817e32b, type: 3}
   - Name: 
     type: 4
-    icon: {fileID: 21300000, guid: 0982adbe29a69174d94a801d827f3770, type: 3}
+    icon: {fileID: 21300000, guid: c3aac5f9fa2234b179ca57ad229be461, type: 3}
   - Name: 
     type: 5
-    icon: {fileID: 21300000, guid: 093f89d08769c71458bc18fb07c0a54d, type: 3}
+    icon: {fileID: 21300000, guid: c3904fbf0c19346a88013b67ae7646e6, type: 3}
   - Name: 
     type: 6
-    icon: {fileID: 21300000, guid: 1179479861c660a43aac2924867a04e3, type: 3}
+    icon: {fileID: 21300000, guid: 337c537d0a4d84da5bc34e93325ec6ea, type: 3}
   - Name: 
     type: 7
-    icon: {fileID: 21300000, guid: 9ee205befa2290d4084b2f27b004b881, type: 3}
+    icon: {fileID: 21300000, guid: 763d630791afb429f91ff4c42e0dbeab, type: 3}
+  - Name: 
+    type: 8
+    icon: {fileID: 21300000, guid: 5c4132a73dc604c0fb9bfb6352967412, type: 3}
+  - Name: 
+    type: 9
+    icon: {fileID: 21300000, guid: 1d8d72f363d1740f283d33d5b3d3b5ff, type: 3}
+  - Name: 
+    type: 10
+    icon: {fileID: 21300000, guid: db6130b9d6f1841c099503a8c16fae41, type: 3}
+  - Name: 
+    type: 11
+    icon: {fileID: 21300000, guid: 5b9919bed7ae04e5ba53b4b5b4e21ee3, type: 3}
+  - Name: 
+    type: 12
+    icon: {fileID: 21300000, guid: 2eb1cc9d1b6144350b04a7b83234c321, type: 3}
+  - Name: 
+    type: 13
+    icon: {fileID: 21300000, guid: 87301b1f7e6444e9b9c615ab2626e37d, type: 3}
+  - Name: 
+    type: 14
+    icon: {fileID: 21300000, guid: f81e908026c804802abe372110f3d229, type: 3}
+  - Name: 
+    type: 15
+    icon: {fileID: 21300000, guid: 4abbc0f475d21472aad9fc74957182b6, type: 3}
+  - Name: 
+    type: 16
+    icon: {fileID: 21300000, guid: e60dd6dcd92894d59899f32668ef8207, type: 3}
+  - Name: 
+    type: 17
+    icon: {fileID: 21300000, guid: eb6670178ac674310af61ea8690255dc, type: 3}
