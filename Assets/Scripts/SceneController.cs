@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -28,6 +29,7 @@ public class SceneController : MonoBehaviour
     }
     public void LoadScene(string senceName)
     {
+        DOTween.KillAll();
         SceneManager.LoadScene(senceName);
     }
     public void LoadNext()

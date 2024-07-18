@@ -18,6 +18,12 @@ public class ScoreNumberAnimator : MonoBehaviour
         PlayChangeAnimation();
     }
 
+    public void OnDestroy()
+    {
+        DOTween.Kill(this);
+        DOTween.Kill(transform);
+    }
+
     public void ChangeTo(string text)
     {
         if (text == scoreText.text)

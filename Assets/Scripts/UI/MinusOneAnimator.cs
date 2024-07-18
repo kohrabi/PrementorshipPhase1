@@ -12,6 +12,12 @@ public class MinusOneAnimator : MonoBehaviour
         PlayAnimation();
     }
 
+    public void OnDestroy()
+    {
+        DOTween.Kill(transform);    
+        DOTween.Kill(this);    
+    }
+
     void PlayAnimation()
     {
         var animation = DOTween.Sequence(this);

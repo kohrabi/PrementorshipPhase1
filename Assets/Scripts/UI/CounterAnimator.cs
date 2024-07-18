@@ -15,6 +15,12 @@ public class CounterAnimator : MonoBehaviour
     }
 
 
+    public void OnDestroy()
+    {
+        DOTween.Kill(transform);
+    }
+
+
     // Update is called once per frame
     void Update()
     {

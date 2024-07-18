@@ -58,6 +58,18 @@ public class ButtonScript : MonoBehaviour
     {
         ButtonSprite.sprite = sprite;   
     }
+    
+    public void OnDestroy()
+    {
+        boxPointerEnter.Kill();
+        boxPointerExit.Kill();
+        boxOpen.Kill();
+        boxClose.Kill();
+        boxCorrect.Kill();
+        boxWrong.Kill();
+        boxIntro.Kill();
+        DOTween.Kill(this);
+    }
     public void Update()
     {
         if (IsChosen) state = ButtonState.Chosen;
