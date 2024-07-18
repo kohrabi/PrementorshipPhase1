@@ -257,19 +257,10 @@ public class LevelManager : MonoBehaviour
         GridLayoutGroup grid = Board_GameObject.GetComponent<GridLayoutGroup>();
         // CurrentLevel da duoc clamp
         lv_info = levelSO.lv_InfoList[CurrentLevel];
-        switch (lv_info.Size)
-        {
-            case 4:
-                grid.constraintCount = 4;
-                grid.cellSize = new Vector2(100f, 100f);
-                grid.spacing = new Vector2(30f, 30f);
-                break;
-            case 6:
-                grid.constraintCount = 6;
-                grid.cellSize = new Vector2(80f, 80f);
-                grid.spacing = new Vector2(15f, 15f);
-                break;
-        }
+        grid.constraintCount = lv_info.ColumnSize;
+        grid.cellSize = lv_info.UISettings.CellSize;
+        grid.spacing = lv_info.UISettings.SpacingSize;
+        // Deciding the UI
         TimeManager.Instance._limittime = lv_info.Time;
     }
 
@@ -297,7 +288,7 @@ public class LevelManager : MonoBehaviour
         //    _board.Add(objects[i].GetComponent<ButtonScript>());
         //}
 
-        for (int i = 0; i < lv_info.Size * lv_info.Size; i++)
+        for (int i = 0; i < lv_info.RowSize * lv_info.ColumnSize; i++)
         {
             GameObject box = Instantiate(box_prefab, Board_GameObject.transform);
             _board.Add(box.GetComponent<ButtonScript>());

@@ -15,5 +15,14 @@ public class Level_Info
     public int Level; //So thu tu cua level
     public int Time; //second
     public int MaxMove;
-    public int Size; //4 hoac 6
+    public int RowSize; //4 hoac 6
+    public int ColumnSize; //4 hoac 6
+    public LevelUISettings UISettings;
+}
+
+[System.Serializable]
+public class LevelUISettings
+{
+    public Vector2 CellSize = new Vector2(80f, 80f);
+    public Vector2 SpacingSize = new Vector2(20f, 20f); 
 }

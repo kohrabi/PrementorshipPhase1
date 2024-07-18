@@ -16,8 +16,24 @@ MonoBehaviour:
   - Level: 1
     Time: 120
     MaxMove: 1000
-    Size: 4
+    RowSize: 4
+    ColumnSize: 6
+    UISettings:
+      CellSize: {x: 80, y: 80}
+      SpacingSize: {x: 20, y: 40}
   - Level: 2
     Time: 120
     MaxMove: 1000
-    Size: 6
+    RowSize: 4
+    ColumnSize: 4
+    UISettings:
+      CellSize: {x: 100, y: 100}
+      SpacingSize: {x: 30, y: 30}
+  - Level: 3
+    Time: 120
+    MaxMove: 1000
+    RowSize: 6
+    ColumnSize: 6
+    UISettings:
+      CellSize: {x: 80, y: 80}
+      SpacingSize: {x: 20, y: 20}
