@@ -30,4 +30,9 @@ public class SceneController : MonoBehaviour
     {
         SceneManager.LoadScene(senceName);
     }
+    public void LoadNext()
+    {
+        GameManager.Instance.LevelIndex++;
+        SceneController.Instance.LoadScene("GameScene");
+    }
 }
