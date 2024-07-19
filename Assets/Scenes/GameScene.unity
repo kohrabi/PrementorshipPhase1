@@ -4430,6 +4430,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1075834251116398514, guid: dc469af72f3f0c549a5576dc21ee8034, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2790712005852947408, guid: dc469af72f3f0c549a5576dc21ee8034, type: 3}
       propertyPath: m_Name
       value: TransitionSprite

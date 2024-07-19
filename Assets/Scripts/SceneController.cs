@@ -13,7 +13,7 @@ public class SceneController : MonoBehaviour
     {
         if (_instance != null)
         {
-
+            
         }
         else
         {
@@ -25,12 +25,19 @@ public class SceneController : MonoBehaviour
     #endregion Singleton   
 
     [SerializeField] public Transform TransitionRect;
-
+    Tween transitionEntry;
+    Tween transition;
 
     private void Start()
     {
         PlayOpenAnimation();
-        SceneManager.sceneLoaded += (scene, mode) => PlayOpenAnimation() ;
+        if (Instance == null)
+            SceneManager.sceneLoaded += (scene, mode) => PlayOpenAnimation() ;
+    }
+
+    public void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= (scene, mode) => PlayOpenAnimation();
     }
 
     public void PlayOpenAnimation()
@@ -42,9 +49,11 @@ public class SceneController : MonoBehaviour
 
         if (TransitionRect != null)
         {
+            Debug.Log("Called");
+            DOTween.Complete(TransitionRect, true);
             TransitionRect.localPosition = Vector3.zero;
             TransitionRect.GetChild(0).gameObject.SetActive(true);
-            TransitionRect.DOMove(new Vector3(Screen.width * 2, -Screen.height / 2, 0), 1f)
+            transition = TransitionRect.DOMove(new Vector3(Screen.width * 2, -Screen.height / 2, 0), 1f)
                 .SetDelay(0.2f)
                 .SetEase(Ease.OutQuart)
                 .Play()
@@ -61,14 +70,20 @@ public class SceneController : MonoBehaviour
 
     public void LoadScene(string sceneName)
     {
+        if (TransitionRect == null)
+        {
+            TransitionRect = GameObject.FindGameObjectWithTag("TransitionRect").transform;
+        }
+
         if (TransitionRect != null)
         {
             DOTween.Complete(TransitionRect, true);
             TransitionRect.GetChild(0).gameObject.SetActive(true);
-            TransitionRect.DOLocalMove(Vector3.zero, 1f)
+            transition = TransitionRect.DOLocalMove(Vector3.zero, 0.8f)
                 .SetDelay(0.2f)
                 .SetEase(Ease.OutQuart)
                 .Play()
+                .SetUpdate(true)
                 .OnComplete(() => Load(sceneName));
         }
         else
@@ -79,8 +94,8 @@ public class SceneController : MonoBehaviour
     private void Load(string sceneName)
     {
         DOTween.KillAll(true);
+        Time.timeScale = 1f;
         SceneManager.LoadScene(sceneName);
-
     }
     public void LoadNext()
     {
