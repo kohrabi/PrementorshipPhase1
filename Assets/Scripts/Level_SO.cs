@@ -15,8 +15,8 @@ public class Level_Info
     public int Level; //So thu tu cua level
     public int Time; //second
     public int MaxMove;
-    public int RowSize; //4 hoac 6
-    public int ColumnSize; //4 hoac 6
+    public int RowSize;
+    public int ColumnSize;
     public LevelUISettings UISettings;
 }
 

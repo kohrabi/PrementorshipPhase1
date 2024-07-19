@@ -288,13 +288,6 @@ public class LevelManager : MonoBehaviour
 
     void InitBoard()
     {
-        //Them cac button vao _board
-        //GameObject[] objects = GameObject.FindGameObjectsWithTag("PuzzleButton");
-        //for (int i = 0; i < objects.Length; i++)
-        //{
-        //    _board.Add(objects[i].GetComponent<ButtonScript>());
-        //}
-
         for (int i = 0; i < lv_info.RowSize * lv_info.ColumnSize; i++)
         {
             GameObject box = Instantiate(box_prefab, Board_GameObject.transform);
