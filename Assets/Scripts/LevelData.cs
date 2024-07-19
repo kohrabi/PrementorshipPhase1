@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class LevelData
 {
-    public float time1,time2;
-    public int move1,move2;
+    public string time;
+    public int move;
+    public float   score;
     public LevelData()
     {
-        time1 = time2 = move1 = move2 = -1;
+            score=-1;
     }
 }
