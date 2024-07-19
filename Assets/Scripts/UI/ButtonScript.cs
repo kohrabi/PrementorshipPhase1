@@ -265,6 +265,7 @@ public class ButtonScript : MonoBehaviour
             .SetEase(Ease.OutCubic));
 
         boxIntro.OnComplete(SetState);
+        boxIntro.SetDelay(boxIntro.Delay() + 0.2f);
         boxIntro.Play();
     }   
 
