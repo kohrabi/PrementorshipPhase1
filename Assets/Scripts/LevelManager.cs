@@ -285,11 +285,11 @@ public class LevelManager : MonoBehaviour
 
     #region Khoi tao board
 
-    void Shuffle(List<BoxClass> list)
+    void Shuffle<T>(List<T> list)
     {
         for (int i = 0; i < list.Count; i++)
         {
-            BoxClass temp = list[i];
+            T temp = list[i];
             int randomIndex = Random.Range(i, list.Count);
             list[i] = list[randomIndex];
             list[randomIndex] = temp;
@@ -305,10 +305,20 @@ public class LevelManager : MonoBehaviour
         }
 
         //Chuyen box trong scriptable object vao list va random
+        List<int> randomIndexList = new List<int>();
+        for (int i = 0; i < _boxSO.BoxTypeList.Count; i++)
+        {
+            randomIndexList.Add(i);
+        }
+        Shuffle(randomIndexList);
         for (int i = 0; i < _board.Count / 2; i++)
         {
-            _boxtypelist.Add(_boxSO.BoxTypeList[i]);
-            _boxtypelist.Add(_boxSO.BoxTypeList[i]); //Nhan doi so box
+            //Random SO
+            int rand = Random.Range(0, randomIndexList.Count - 1);
+            int index = randomIndexList[rand];
+            randomIndexList.RemoveAt(rand);
+            _boxtypelist.Add(_boxSO.BoxTypeList[index]);
+            _boxtypelist.Add(_boxSO.BoxTypeList[index]); //Nhan doi so box
         }
 
         Shuffle(_boxtypelist); //Random cac box
