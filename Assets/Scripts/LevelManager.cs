@@ -353,6 +353,11 @@ public class LevelManager : MonoBehaviour
             _levelData.move = MoveCount;
             SaveData();
         }
+        if (CurrentLevel == GameManager.Instance.level())
+        {
+
+            GameManager.Instance.setLevel(CurrentLevel+1);
+        }
         YouWinRecord.text = "Record: Time: " + _levelData.time + " Move: " + _levelData.move.ToString() + " Score: " + _levelData.score.ToString();
         YouWin.text = "Time: " + TimeManager.Instance.PlayTimeString + " Move: " + MoveCount.ToString() +
                       " Score: " + scoreAnimator.TargetScore.ToString();
