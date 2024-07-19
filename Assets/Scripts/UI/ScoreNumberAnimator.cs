@@ -9,7 +9,7 @@ public class ScoreNumberAnimator : MonoBehaviour
 {
     TMP_Text scoreText;
     TextAnimator textAnimator;
-    Sequence animation;
+    Sequence Animation;
 
     private void Awake()
     {
@@ -36,15 +36,15 @@ public class ScoreNumberAnimator : MonoBehaviour
     void PlayChangeAnimation()
     {
         textAnimator.enabled = false;
-        if (animation.IsActive())
-            animation.Kill(false);
-        animation = DOTween.Sequence(this);
-        animation.Append(
+        if (Animation.IsActive())
+            Animation.Kill(false);
+        Animation = DOTween.Sequence(this);
+        Animation.Append(
             transform.DOScale(1, 0.1f)
             .SetEase(Ease.OutCubic)
             );
-        animation.OnComplete(() => textAnimator.enabled = true);
-        animation.Play();
+        Animation.OnComplete(() => textAnimator.enabled = true);
+        Animation.Play();
     }
 
 }

@@ -74,30 +74,30 @@ public class ButtonScript : MonoBehaviour
     {
         if (IsChosen) state = ButtonState.Chosen;
 
-        if (false)// && (state == ButtonState.None) && isMouseOver)
-        {
-            var mousePos = Camera.main.ScreenToViewportPoint(Input.mousePosition);
-            mousePos.x = Mathf.Clamp01(mousePos.x);
-            mousePos.y = Mathf.Clamp01(mousePos.y);
-            mousePos.z = 0;
-            //mousePos = mousePos * 2 - Vector3.one;
-            var boxPos = Camera.main.ScreenToViewportPoint(Collider.position);
-            var pos = boxPos - mousePos;
-            pos /= GetWidth(Collider) / (Screen.width / 1f);
-            pos *= 30;
+        //if (false)// && (state == ButtonState.None) && isMouseOver)
+        //{
+        //    var mousePos = Camera.main.ScreenToViewportPoint(Input.mousePosition);
+        //    mousePos.x = Mathf.Clamp01(mousePos.x);
+        //    mousePos.y = Mathf.Clamp01(mousePos.y);
+        //    mousePos.z = 0;
+        //    //mousePos = mousePos * 2 - Vector3.one;
+        //    var boxPos = Camera.main.ScreenToViewportPoint(Collider.position);
+        //    var pos = boxPos - mousePos;
+        //    pos /= GetWidth(Collider) / (Screen.width / 1f);
+        //    pos *= 30;
 
-            HiddenFrame.DORotate(new Vector3(-pos.y, pos.x, 0), 0.2f)
-                .SetEase(Ease.OutQuint)
-                .Play()
-                .OnComplete(() =>
-                {
-                    if (!isMouseOver)
-                    {
-                        HiddenFrame.DORotate(new Vector3(0, 0, 0), 0.2f)
-                            .Play();
-                    }
-                });
-        }
+        //    HiddenFrame.DORotate(new Vector3(-pos.y, pos.x, 0), 0.2f)
+        //        .SetEase(Ease.OutQuint)
+        //        .Play()
+        //        .OnComplete(() =>
+        //        {
+        //            if (!isMouseOver)
+        //            {
+        //                HiddenFrame.DORotate(new Vector3(0, 0, 0), 0.2f)
+        //                    .Play();
+        //            }
+        //        });
+        //}
 #if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.Space))
             Wrong();

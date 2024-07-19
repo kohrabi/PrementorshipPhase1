@@ -42,7 +42,6 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private string musicName;
     [SerializeField] public int MoveCount;
     [SerializeField] private TMP_Text Current, YouWin,CurrentRecord,YouWinRecord,YouLoseRecord;
-    private float time;
     private LevelData _levelData;
     public int CurrentLevel { get; set; }
 
@@ -88,8 +87,6 @@ public class LevelManager : MonoBehaviour
         pauseMenu.SetActive(false);
         _youlosemenu.SetActive(false);
         _youwonmenu.SetActive(false);
-        //TimeManager.Instance.StartTracking();
-        time = 0;
 
         InitBoard();
         UpdateUI();
