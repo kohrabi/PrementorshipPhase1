@@ -63,22 +63,23 @@ public class SceneController : MonoBehaviour
     {
         if (TransitionRect != null)
         {
-            DOTween.Complete(TransitionRect);
+            DOTween.Complete(TransitionRect, true);
             TransitionRect.GetChild(0).gameObject.SetActive(true);
             TransitionRect.DOLocalMove(Vector3.zero, 1f)
                 .SetDelay(0.2f)
                 .SetEase(Ease.OutQuart)
                 .Play()
-                .OnComplete(() => Load());
+                .OnComplete(() => Load(sceneName));
         }
         else
-            Load();
+            Load(sceneName);
     }
 
-    private void Load()
+
+    private void Load(string sceneName)
     {
-        DOTween.KillAll();
-        SceneManager.LoadScene("GameScene");
+        DOTween.KillAll(true);
+        SceneManager.LoadScene(sceneName);
 
     }
     public void LoadNext()

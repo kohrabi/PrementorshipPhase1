@@ -32,7 +32,6 @@ public class LevelManager : MonoBehaviour
     [Header("Score")] [SerializeField] private ScoreAnimator scoreAnimator;
     [SerializeField] private ScoreData scoreData;
 
-    private int _moveCount;
 
     //UI
     [SerializeField] private GameObject pauseMenu;
@@ -41,18 +40,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private Button music, sfx;
     [SerializeField] private string DATA_KEY;
     [SerializeField] private string musicName;
-    [SerializeField] public int MoveCount
-    {
-        get
-        {
-            return _moveCount;
-        }
-        set
-        {
-            counterAnimator.SetCurrentValue(value);
-            _moveCount = value;
-        }
-    }
+    [SerializeField] public int MoveCount;
     [SerializeField] private TMP_Text Current, YouWin;
     private float time;
     private LevelData _levelData;
@@ -279,6 +267,8 @@ public class LevelManager : MonoBehaviour
         // Deciding the UI
         TimeManager.Instance._limittime = lv_info.Time;
         MoveCount = lv_info.MaxMove;
+        counterAnimator.SetCurrentValue(MoveCount);
+
     }
 
     #endregion Khoi tao level
@@ -355,7 +345,6 @@ public class LevelManager : MonoBehaviour
         //Hien thong bao chien thang, hien so sao cua player, cho phep chuyen level...
         _youwonmenu.SetActive(true);
         Debug.Log("You win");
-        return;
     }
 
     public void PlayerLose()

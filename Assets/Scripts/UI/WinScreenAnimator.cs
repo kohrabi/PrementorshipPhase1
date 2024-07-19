@@ -17,6 +17,7 @@ public class WinScreenAnimator : MonoBehaviour
     public void PlayComeinAnimation()
     {
         var animation = DOTween.Sequence(this);
+        animation.SetDelay(1.5f);
         animation.Append(
             transform.DOLocalMove(Vector3.zero, 0.3f)
                 .SetEase(Ease.Linear)
