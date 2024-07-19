@@ -206,7 +206,7 @@ public class LevelManager : MonoBehaviour
     public IEnumerator XuLi2Box()
     {
         yield return new WaitForSeconds(0.7f);
-        MoveCounter++;
+        MoveCounter--;
         //Chọn sai
         if (_box2.buttonType.type != _box1.buttonType.type)
         {
@@ -244,6 +244,8 @@ public class LevelManager : MonoBehaviour
             if (CheckWinCondition())
                 PlayerWin();
         }
+        if( MoveCounter <= 0 ) 
+            PlayerLose();
     }
 
     #endregion Select And Compare Box
@@ -262,6 +264,7 @@ public class LevelManager : MonoBehaviour
         grid.spacing = lv_info.UISettings.SpacingSize;
         // Deciding the UI
         TimeManager.Instance._limittime = lv_info.Time;
+        MoveCounter = lv_info.MaxMove;
     }
 
     #endregion Khoi tao level

@@ -14,24 +14,48 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lv_InfoList:
   - Level: 1
-    Time: 120
-    MaxMove: 1000
+    Time: 180
+    MaxMove: 40
     RowSize: 4
-    ColumnSize: 6
+    ColumnSize: 4
     UISettings:
-      CellSize: {x: 80, y: 80}
-      SpacingSize: {x: 20, y: 40}
+      CellSize: {x: 100, y: 100}
+      SpacingSize: {x: 30, y: 30}
   - Level: 2
-    Time: 120
-    MaxMove: 1000
+    Time: 150
+    MaxMove: 35
     RowSize: 4
     ColumnSize: 4
     UISettings:
       CellSize: {x: 100, y: 100}
       SpacingSize: {x: 30, y: 30}
   - Level: 3
-    Time: 120
-    MaxMove: 1000
+    Time: 300
+    MaxMove: 50
+    RowSize: 4
+    ColumnSize: 6
+    UISettings:
+      CellSize: {x: 80, y: 80}
+      SpacingSize: {x: 20, y: 40}
+  - Level: 4
+    Time: 270
+    MaxMove: 45
+    RowSize: 4
+    ColumnSize: 6
+    UISettings:
+      CellSize: {x: 80, y: 80}
+      SpacingSize: {x: 20, y: 40}
+  - Level: 5
+    Time: 360
+    MaxMove: 100
+    RowSize: 6
+    ColumnSize: 6
+    UISettings:
+      CellSize: {x: 80, y: 80}
+      SpacingSize: {x: 20, y: 20}
+  - Level: 6
+    Time: 330
+    MaxMove: 90
     RowSize: 6
     ColumnSize: 6
     UISettings:

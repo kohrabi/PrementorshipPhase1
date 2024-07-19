@@ -2867,6 +2867,18 @@ MonoBehaviour:
           m_StringArgument: select
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1784811194}
+        m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
+        m_MethodName: Load
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: GameScene
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1194696843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4698,6 +4710,9 @@ MonoBehaviour:
     MaxMove: 0
     RowSize: 0
     ColumnSize: 0
+    UISettings:
+      CellSize: {x: 80, y: 80}
+      SpacingSize: {x: 20, y: 20}
   levelSO: {fileID: 11400000, guid: 234409c060d4d8543a9d75517087071d, type: 2}
 --- !u!4 &1784811195
 Transform:
