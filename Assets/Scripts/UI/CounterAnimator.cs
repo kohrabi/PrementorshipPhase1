@@ -12,6 +12,8 @@ public class CounterAnimator : MonoBehaviour
     private void Start()
     {
         counterText = GetComponent<TMP_Text>(); 
+        if (LevelManager.Instance != null)
+            currentValue = LevelManager.Instance.MoveCount;   
     }
 
 
@@ -26,14 +28,20 @@ public class CounterAnimator : MonoBehaviour
     {
         if (LevelManager.Instance != null)
         {
-            if (currentValue != LevelManager.Instance.MoveCounter)
+            if (currentValue != LevelManager.Instance.MoveCount)
             {
-                currentValue = LevelManager.Instance.MoveCounter;
+                currentValue = LevelManager.Instance.MoveCount;
                 PlayCountAnimation();
                 if (minusOne != null)
                     Instantiate(minusOne, transform.parent).transform.position = transform.position;
             }
         }
+    }
+
+    public void SetCurrentValue(int value)
+    {
+        currentValue = value;
+        counterText.text = currentValue.ToString();
     }
     
     void PlayCountAnimation()

@@ -33,8 +33,7 @@ public class LevelSelection : MonoBehaviour
     }
     public void Load(string name)
     {
-        GameManager.Instance.LevelIndex = Int32.Parse(name);
-        SceneController.Instance.LoadScene("GameScene");
+        SceneController.Instance.LoadScene(name);
     }
     public void PlayMusic(string name)
     {

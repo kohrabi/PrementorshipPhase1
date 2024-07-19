@@ -32,13 +32,27 @@ public class LevelManager : MonoBehaviour
     [Header("Score")] [SerializeField] private ScoreAnimator scoreAnimator;
     [SerializeField] private ScoreData scoreData;
 
+    private int _moveCount;
+
     //UI
     [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private CounterAnimator counterAnimator;
     [SerializeField] private Sprite onMusic, offMusic, onSfx, offSfx;
     [SerializeField] private Button music, sfx;
     [SerializeField] private string DATA_KEY;
     [SerializeField] private string musicName;
-    [SerializeField] public int MoveCounter;
+    [SerializeField] public int MoveCount
+    {
+        get
+        {
+            return _moveCount;
+        }
+        set
+        {
+            counterAnimator.SetCurrentValue(value);
+            _moveCount = value;
+        }
+    }
     [SerializeField] private TMP_Text Current, YouWin;
     private float time;
     private LevelData _levelData;
@@ -110,7 +124,7 @@ public class LevelManager : MonoBehaviour
 
     public void pauseButton()
     {
-        Current.text = "Time: " + TimeManager.Instance.CurrentTimeString + " Move: " + MoveCounter.ToString() +
+        Current.text = "Time: " + TimeManager.Instance.CurrentTimeString + " Move: " + MoveCount.ToString() +
                        " Score: " + scoreAnimator.TargetScore.ToString();
         Time.timeScale = 0f;
         pauseMenu.SetActive(true);
@@ -206,7 +220,7 @@ public class LevelManager : MonoBehaviour
     public IEnumerator XuLi2Box()
     {
         yield return new WaitForSeconds(0.7f);
-        MoveCounter--;
+        MoveCount--;
         //Chọn sai
         if (_box2.buttonType.type != _box1.buttonType.type)
         {
@@ -244,7 +258,7 @@ public class LevelManager : MonoBehaviour
             if (CheckWinCondition())
                 PlayerWin();
         }
-        if( MoveCounter <= 0 ) 
+        if( MoveCount <= 0 ) 
             PlayerLose();
     }
 
@@ -264,7 +278,7 @@ public class LevelManager : MonoBehaviour
         grid.spacing = lv_info.UISettings.SpacingSize;
         // Deciding the UI
         TimeManager.Instance._limittime = lv_info.Time;
-        MoveCounter = lv_info.MaxMove;
+        MoveCount = lv_info.MaxMove;
     }
 
     #endregion Khoi tao level
@@ -336,7 +350,7 @@ public class LevelManager : MonoBehaviour
 
     public void PlayerWin()
     {
-        YouWin.text = "Time: " + TimeManager.Instance.CurrentTimeString + " Move: " + MoveCounter.ToString() +
+        YouWin.text = "Time: " + TimeManager.Instance.CurrentTimeString + " Move: " + MoveCount.ToString() +
                       " Score: " + scoreAnimator.TargetScore.ToString();
         //Hien thong bao chien thang, hien so sao cua player, cho phep chuyen level...
         _youwonmenu.SetActive(true);
