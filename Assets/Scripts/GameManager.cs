@@ -76,6 +76,11 @@ public class GameManager : MonoBehaviour
         SaveData();
 
     }
+    public void setLevel(int level)
+    {
+        _gameData.level = level;
+        SaveData();
+    }
     private void SaveData()
     {
         //JSON hóa data clas

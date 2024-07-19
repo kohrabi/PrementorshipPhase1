@@ -10,11 +10,19 @@ public class LevelSelection : MonoBehaviour
     [SerializeField] private Sprite onMusic, offMusic, onSfx, offSfx;
     [SerializeField] private Button music, sfx;
     [SerializeField] private string musicName;
+
+    public List<GameObject> list;
     // Start is called before the first frame update
     void Start()
     {
+        int n = GameManager.Instance.level();
+        if(n>=list.Count) n=list.Count-1;
+        for (int i = 0; i <=n; i++)
+        {
+            list[i].SetActive(true);
+        }
 
-        if(AudioManager.Instance!=null) AudioManager.Instance.PlayMusic(musicName);
+            if (AudioManager.Instance!=null) AudioManager.Instance.PlayMusic(musicName);
     
         Time.timeScale = 1;
             pauseMenu.SetActive(false);
@@ -35,6 +43,10 @@ public class LevelSelection : MonoBehaviour
     {
         GameManager.Instance.LevelIndex = Int32.Parse(name);
         SceneController.Instance.LoadScene("GameScene");
+    }
+    public void LoadScene(string name)
+    {
+        SceneController.Instance.LoadScene(name);
     }
     public void PlayMusic(string name)
     {

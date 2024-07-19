@@ -221,7 +221,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &202214137
 RectTransform:
   m_ObjectHideFlags: 0
@@ -921,7 +921,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &842305533
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1064,7 +1064,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &902851976
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1217,7 +1217,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &960308252
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1440,7 +1440,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1249931795}
         m_TargetAssemblyTypeName: LevelSelection, Assembly-CSharp
-        m_MethodName: Load
+        m_MethodName: LoadScene
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1685,6 +1685,13 @@ MonoBehaviour:
   music: {fileID: 1097287892}
   sfx: {fileID: 2114470107}
   musicName: music2
+  list:
+  - {fileID: 1738401286}
+  - {fileID: 202214136}
+  - {fileID: 1437948445}
+  - {fileID: 842305532}
+  - {fileID: 1668548657}
+  - {fileID: 960308251}
 --- !u!114 &1249931796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1784,7 +1791,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1437948446
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2114,7 +2121,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1668548658
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2258,7 +2265,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1738401287
 RectTransform:
   m_ObjectHideFlags: 0
