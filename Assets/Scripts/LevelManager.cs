@@ -41,7 +41,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private string DATA_KEY;
     [SerializeField] private string musicName;
     [SerializeField] public int MoveCount;
-    [SerializeField] private TMP_Text Current, YouWin;
+    [SerializeField] private TMP_Text Current, YouWin,CurrentRecord,YouWinRecord,YouLoseRecord;
     private float time;
     private LevelData _levelData;
     public int CurrentLevel { get; set; }
@@ -67,6 +67,7 @@ public class LevelManager : MonoBehaviour
         else
             CurrentLevel = 0;
         InitLevel();
+        DATA_KEY= "Level"+CurrentLevel.ToString();
         if (AudioManager.Instance != null) AudioManager.Instance.PlayMusic(musicName);
         if (PlayerPrefs.HasKey(DATA_KEY))
         {
@@ -85,11 +86,23 @@ public class LevelManager : MonoBehaviour
 
         Time.timeScale = 1;
         pauseMenu.SetActive(false);
+        _youlosemenu.SetActive(false);
+        _youwonmenu.SetActive(false);
         //TimeManager.Instance.StartTracking();
         time = 0;
 
         InitBoard();
         UpdateUI();
+
+        if(_levelData.score == -1)
+        {
+            CurrentRecord.text = "Record: _____________";
+        }
+        else
+        {
+            CurrentRecord.text = "Record: Time: "+_levelData.time+" Move: "+_levelData.move.ToString()+" Score: "+_levelData.score.ToString();
+        }
+        YouLoseRecord.text= CurrentRecord.text;
     }
 
     void FixedUpdate()
@@ -112,7 +125,7 @@ public class LevelManager : MonoBehaviour
 
     public void pauseButton()
     {
-        Current.text = "Time: " + TimeManager.Instance.CurrentTimeString + " Move: " + MoveCount.ToString() +
+        Current.text = "Time: " + TimeManager.Instance.PlayTimeString + " Move: " + MoveCount.ToString() +
                        " Score: " + scoreAnimator.TargetScore.ToString();
         Time.timeScale = 0f;
         pauseMenu.SetActive(true);
@@ -333,7 +346,15 @@ public class LevelManager : MonoBehaviour
 
     public void PlayerWin()
     {
-        YouWin.text = "Time: " + TimeManager.Instance.CurrentTimeString + " Move: " + MoveCount.ToString() +
+        if (scoreAnimator.TargetScore > _levelData.score)
+        {
+            _levelData.score = scoreAnimator.TargetScore;
+            _levelData.time = TimeManager.Instance.PlayTimeString;
+            _levelData.move = MoveCount;
+            SaveData();
+        }
+        YouWinRecord.text = "Record: Time: " + _levelData.time + " Move: " + _levelData.move.ToString() + " Score: " + _levelData.score.ToString();
+        YouWin.text = "Time: " + TimeManager.Instance.PlayTimeString + " Move: " + MoveCount.ToString() +
                       " Score: " + scoreAnimator.TargetScore.ToString();
         //Hien thong bao chien thang, hien so sao cua player, cho phep chuyen level...
         _youwonmenu.SetActive(true);

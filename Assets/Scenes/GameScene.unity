@@ -3654,7 +3654,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1394351326
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4826,6 +4826,9 @@ MonoBehaviour:
   MoveCount: 0
   Current: {fileID: 877869804}
   YouWin: {fileID: 1718215508}
+  CurrentRecord: {fileID: 21127357}
+  YouWinRecord: {fileID: 1656118791}
+  YouLoseRecord: {fileID: 908002425}
   _boxSO: {fileID: 11400000, guid: 15d219555259be0408305c75d9a26e73, type: 2}
   _boxtypelist: []
   _board: []

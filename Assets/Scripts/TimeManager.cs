@@ -84,6 +84,16 @@ public class TimeManager : MonoBehaviour
             return $"{minutes:00}:{seconds:00}";
         }
     }
+    public string PlayTimeString
+    {
+        get
+        {
+            float elapsedTime = (Time.time - StartingTime) * Speed;
+            int minutes = Mathf.FloorToInt(elapsedTime / 60f);
+            int seconds = Mathf.FloorToInt(elapsedTime % 60f);
+            return $"{minutes:00}:{seconds:00}";
+        }
+    }
 
     public bool IsOutOfTime()
     {
